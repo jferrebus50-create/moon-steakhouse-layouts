@@ -1,0 +1,164 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(ellipse at 50% -10%,#1a140a,#0a0806 55%,#050403);color:#e9d9ab;font-family:Poppins,sans-serif;padding:16px 10px 26px}
+.w{max-width:1060px;margin:0 auto}
+.hdr{text-align:center;margin-bottom:8px}
+.mn{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f6e7b0,#d4af37 55%,#8a6d1f);margin:0 auto 5px;box-shadow:0 0 22px 3px rgba(212,175,55,.4)}
+.hdr h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:30px;letter-spacing:1px;background:linear-gradient(180deg,#f6e7b0,#d4af37 60%,#a9822b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hdr .sb{color:#9c8a63;font-size:11.5px;margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:10px 0 6px}
+.chip{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:4px 9px;border-radius:999px;font-size:11px}.chip b{color:#f0dfa9}
+.ctrl{display:flex;gap:5px;justify-content:center;margin:4px 0 8px;flex-wrap:wrap}
+.btn{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:5px 11px;border-radius:8px;font-size:11px;cursor:pointer;font-weight:500;transition:.15s}.btn:hover{border-color:#d4af37;color:#f2e2ac}.btn.active{background:linear-gradient(135deg,#d4af37,#a9822b);color:#1a1206;border-color:#d4af37}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:4px 0 8px}
+.tab{background:#14100a;border:1px solid #3a2f18;color:#9c8a63;padding:6px 10px;border-radius:999px;font-size:11.5px;cursor:pointer;transition:.18s;font-weight:500}.tab:hover{border-color:#d4af37;color:#c9b57e}.tab.active{background:linear-gradient(135deg,#d4af37,#a9822b);color:#1a1206;border-color:#d4af37;box-shadow:0 0 10px rgba(212,175,55,.35)}
+.panel{background:linear-gradient(180deg,#0f0c08,#0a0806);border:1px solid #2c2412;border-radius:14px;padding:16px 14px 6px;box-shadow:0 0 36px rgba(0,0,0,.55),inset 0 0 50px rgba(212,175,55,.025)}
+.ptop{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px}
+.ptitle{font-family:Cormorant Garamond,serif;font-size:22px;color:#f0dfa9;font-weight:600}
+.psub{color:#8f7c50;font-size:12px;margin-top:2px;max-width:600px;line-height:1.4}
+.stats{display:flex;gap:14px;flex-shrink:0}.stat{font-size:10.5px;color:#c9b57e;text-align:right}.stat b{color:#f0dfa9;font-size:17px;display:block;font-family:Cormorant Garamond,serif}
+.stage{width:100%;overflow:hidden;border-radius:8px;margin-top:8px;background:#0c0a06}
+svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:9px;margin:8px 4px 2px;font-size:11px;color:#b8a670}.legend span{display:inline-flex;align-items:center;gap:4px}.sw{width:10px;height:10px;border-radius:2px;display:inline-block;flex-shrink:0}
+.feat{margin:4px 4px 8px;font-size:12px;color:#a89466;line-height:1.55}.feat b{color:#e9d9ab}
+.dim{font-size:11px;color:#6c5e3e;margin:2px 4px 6px}.dim b{color:#9c8a63}
+.note{text-align:center;color:#6c5e3e;font-size:10.5px;margin-top:12px;line-height:1.6}.note b{color:#9c8a63}
+</style></head><body><div class="w">
+<div class="hdr"><div class="mn"></div><h1>MOON STEAKHOUSE</h1><div class="sb">Rooftop Skyline Dining · ~3,000 sq ft · Medellín · Corrected Architecture v2</div></div>
+<div class="chips"><span class="chip">🪜 <b>Diagonal Tiered Amphitheater</b></span><span class="chip">🫧 <b>Round Glass Pods</b></span><span class="chip">🍸 <b>Curved Bar</b></span><span class="chip">🌿 <b>Rooftop Garden Canopy</b></span><span class="chip">🛋️ <b>Lounge Deck</b></span></div>
+<div class="ctrl"><button class="btn active" id="v-iso" onclick="setView('iso')">3D Isometric</button><button class="btn" id="v-top" onclick="setView('top')">Top-Down</button><button class="btn" id="v-angle" onclick="setView('angle')">Low Angle</button><button class="btn" id="v-tour" onclick="toggleTour()">▶ Auto Tour</button></div>
+<div class="tabs" id="tabs"></div>
+<div class="panel"><div class="ptop"><div><div class="ptitle" id="ptitle"></div><div class="psub" id="psub"></div></div><div class="stats"><div class="stat"><b id="pseats"></b>seats</div><div class="stat"><b id="ptables"></b>tables</div></div></div>
+<div class="stage"><svg id="svg" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet"></svg></div>
+<div class="dim" id="pdim"></div><div class="legend" id="legend"></div><div class="feat" id="pfeat"></div></div>
+<div class="note">Fixed per your reference render: <b>diagonal amphitheater corner</b>, <b>round cantilevered glass pods</b>, <b>curved bar</b>, <b>canopy roof above</b>. Only the open terrace tables change between layouts.</div>
+</div>
+<script>
+let VIEW='iso';const SC=8,A=Math.PI/6;let allPts=[];
+function P(x,y,z){let rx,ry;
+ if(VIEW==='top'){rx=x*SC;ry=y*SC*1.1}
+ else if(VIEW==='angle'){rx=(x-y)*Math.cos(A)*SC*.9;ry=(x+y)*Math.sin(A)*SC*.9-z*SC*1.5}
+ else{rx=(x-y)*Math.cos(A)*SC;ry=(x+y)*Math.sin(A)*SC-z*SC}
+ allPts.push([rx,ry]);return[rx,ry]}
+function PP(a){return a.map(p=>p.join(',')).join(' ')}
+function SH(h,amt){let c=h.replace('#',''),n=parseInt(c,16),r=Math.max(0,Math.min(255,(n>>16)+amt)),g=Math.max(0,Math.min(255,((n>>8)&255)+amt)),b=Math.max(0,Math.min(255,(n&255)+amt));return'#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}
+function BOX(x,y,z,w,d,h,c){let t=[P(x,y,z+h),P(x+w,y,z+h),P(x+w,y+d,z+h),P(x,y+d,z+h)];if(VIEW==='top')return'<polygon points="'+PP(t)+'" fill="'+SH(c,25)+'" stroke="'+SH(c,-50)+'" stroke-width="1"/>';let r=[P(x+w,y,z+h),P(x+w,y+d,z+h),P(x+w,y+d,z),P(x+w,y,z)];let f=[P(x,y+d,z+h),P(x+w,y+d,z+h),P(x+w,y+d,z),P(x,y+d,z)];return'<polygon points="'+PP(f)+'" fill="'+SH(c,-55)+'" stroke="'+SH(c,-70)+'" stroke-width="1"/><polygon points="'+PP(r)+'" fill="'+SH(c,-28)+'" stroke="'+SH(c,-70)+'" stroke-width="1"/><polygon points="'+PP(t)+'" fill="'+SH(c,25)+'" stroke="'+SH(c,-50)+'" stroke-width="1"/>'}
+function CIR(cx,cy,z,r,c,n){n=n||18;let a=[];for(let i=0;i<n;i++){let an=(i/n)*Math.PI*2;a.push(P(cx+Math.cos(an)*r,cy+Math.sin(an)*r,z))}return'<polygon points="'+PP(a)+'" fill="'+SH(c,25)+'" stroke="'+SH(c,-50)+'" stroke-width="1"/>'}
+function CIL(cx,cy,z,r,c){let a=[];for(let i=0;i<14;i++){let an=(i/14)*Math.PI*2;a.push(P(cx+Math.cos(an)*r,cy+Math.sin(an)*r,z))}return'<polygon points="'+PP(a)+'" fill="'+SH(c,15)+'" stroke="'+SH(c,-60)+'" stroke-width=".8"/>'}
+function SHD(cx,cy,r){let a=[];for(let i=0;i<14;i++){let an=(i/14)*Math.PI*2;a.push(P(cx+Math.cos(an)*r*1.1,cy+Math.sin(an)*r*1.1,.02))}return'<polygon points="'+PP(a)+'" fill="#000" opacity=".3"/>'}
+function RT(x,y,w,d,h,c){return SHD(x+w/2,y+d/2,Math.max(w,d)/1.4)+BOX(x,y,0,w,d,h,c)}
+function RC(x,y,w,d,n){let s='',nL=Math.round(n/2);for(let i=0;i<nL;i++){let t=(i+.5)/nL;s+=CIL(x+t*w,y-1.4,.9,.78,'#241a0c');s+=CIL(x+t*w,y+d+1.4,.9,.78,'#241a0c')}return s}
+function RD(cx,cy,r,h,c){return SHD(cx,cy,r+2)+'<line x1="'+P(cx,cy,h)[0]+'" y1="'+P(cx,cy,h)[1]+'" x2="'+P(cx,cy,.05)[0]+'" y2="'+P(cx,cy,.05)[1]+'" stroke="#4a3a1e" stroke-width="2"/>'+CIR(cx,cy,h,r,c)}
+function CO(cx,cy,orb,n,off){off=off||0;let s='';for(let i=0;i<n;i++){let a=(i/n)*Math.PI*2+off;s+=CIL(cx+Math.cos(a)*orb,cy+Math.sin(a)*orb,.9,.78,'#241a0c')}return s}
+const YEL='#f0c93a',BLK='#161310',WD='#8a6a3a',BAR_C='#e0b53a',STONE='#c9c2ac',PODC='#7ecbe0',GRN='#5a8a4a',LNG='#241a12';
+
+function POD(cx,cy,r,h){
+ // round cantilevered glass pod: base support + dome walls + top
+ let s=SHD(cx,cy,r*1.15);
+ s+='<line x1="'+P(cx,cy,h)[0]+'" y1="'+P(cx,cy,h)[1]+'" x2="'+P(cx,cy,.05)[0]+'" y2="'+P(cx,cy,.05)[1]+'" stroke="#2c4a52" stroke-width="2.5"/>';
+ // glass ring walls (a few vertical struts for dimension)
+ for(let i=0;i<8;i++){let an=(i/8)*Math.PI*2,x1=cx+Math.cos(an)*r,y1=cy+Math.sin(an)*r;let p1=P(x1,y1,0.1),p2=P(x1,y1,h*0.85);s+='<line x1="'+p1[0]+'" y1="'+p1[1]+'" x2="'+p2[0]+'" y2="'+p2[1]+'" stroke="'+PODC+'" stroke-width="1" opacity=".4"/>'}
+ s+=CIR(cx,cy,h*0.85,r,PODC,24).replace('fill="'+SH(PODC,25)+'"','fill="'+PODC+'" opacity=".55"');
+ s+=CIR(cx,cy,0.1,r,'#3a5560',24);
+ return s;
+}
+function BARARC(cx,cy,r,a0,a1,segs,col){
+ let s='';for(let i=0;i<segs;i++){
+  let t=i/(segs-1),an=a0+(a1-a0)*t;
+  let x=cx+Math.cos(an)*r,y=cy+Math.sin(an)*r;
+  let nx=cx+Math.cos(an)*(r+1.6),ny=cy+Math.sin(an)*(r+1.6);
+  let w=Math.abs(nx-x)+0.9,d=Math.abs(ny-y)+0.9;
+  s+=BOX(Math.min(x,nx)-0.45,Math.min(y,ny)-0.45,0,w,d,3.3,col);
+ }
+ return s;
+}
+
+function FIXED(){let s='';
+ s+='<defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d4af37" stop-opacity="0"/><stop offset=".5" stop-color="#d4af37" stop-opacity=".35"/><stop offset="1" stop-color="#d4af37" stop-opacity="0"/></linearGradient><radialGradient id="mg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f6e7b0"/><stop offset="60%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8a6d1f" stop-opacity="0"/></radialGradient></defs>';
+ // FLOOR (stone deck)
+ let fl=[P(0,0,0),P(100,0,0),P(100,32,0),P(0,32,0)];s+='<polygon points="'+PP(fl)+'" fill="#141009" stroke="#2a2213" stroke-width="1.2"/>';
+ for(let i=10;i<100;i+=10){let a=P(i,0,.01),b=P(i,32,.01);s+='<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="#1e1810" stroke-width=".5"/>'}
+ // moon
+ let mp=P(94,-4,18);s+='<circle cx="'+mp[0]+'" cy="'+mp[1]+'" r="24" fill="url(#mg)" opacity=".85"/>';
+ // city glow strip along the pod edge (y=0, the view side)
+ let w=[P(2,0,0),P(60,0,0),P(60,1.3,0),P(2,1.3,0)];s+='<polygon points="'+PP(w)+'" fill="url(#gl)" opacity=".5"/>';
+ let c1=[];for(let i=0;i<=16;i++){c1.push(P(2+i*4,0,0))}for(let i=16;i>=0;i--){c1.push(P(2+i*4,0,1.1+Math.sin(i*1.1)*1+Math.cos(i*.6)*.6))}s+='<polygon points="'+PP(c1)+'" fill="#0a1420" opacity=".6"/>';
+
+ // ===== ROOFTOP GARDEN CANOPY (yellow curved roof above, per reference) =====
+ let cn=[P(6,4,15),P(70,2,16),P(78,20,15.5),P(20,26,14.5)];
+ s+='<polygon points="'+PP(cn)+'" fill="'+YEL+'" opacity=".22" stroke="'+YEL+'" stroke-width="1" opacity=".3"/>';
+ let cnL=P(38,10,15.5);s+='<text x="'+cnL[0]+'" y="'+cnL[1]+'" fill="#d8c14a" font-size="9" text-anchor="middle" opacity=".7">ROOFTOP GARDEN CANOPY ABOVE</text>';
+ for(let i=0;i<10;i++){let gx=10+i*6,gp=P(gx,4,15.2);s+='<circle cx="'+gp[0]+'" cy="'+gp[1]+'" r="2" fill="'+GRN+'" opacity=".5"/>'}
+
+ // ===== ROUND GLASS PODS (cantilevered off the view edge, y=0) =====
+ const podXs=[6,14,22,30];
+ for(const px of podXs){s+=POD(px,-1,3.2,3.4)}
+ let pL=P(18,-6,4.6);s+='<text x="'+pL[0]+'" y="'+pL[1]+'" fill="#8ececc" font-size="9.5" text-anchor="middle" font-weight="500">GLASS PODS (cantilevered)</text>';
+
+ // ===== CURVED BAR (S/crescent shape, main terrace) =====
+ s+=BARARC(50,20,8,-2.4,-0.3,9,BAR_C);
+ let barL=P(50,13,3.8);s+='<text x="'+barL[0]+'" y="'+barL[1]+'" fill="#1a1206" font-size="10" text-anchor="middle" font-weight="700" style="paint-order:stroke" stroke="'+BAR_C+'" stroke-width="3">BAR</text>';
+
+ // ===== LOUNGE DECK (wood, tree, sofas) — center-left =====
+ let deck=[P(4,8,0.05),P(38,8,0.05),P(38,26,0.05),P(4,26,0.05)];s+='<polygon points="'+PP(deck)+'" fill="'+WD+'" opacity=".28"/>';
+ s+=BOX(6,20,0,7,3,1.3,LNG);s+=BOX(6,10,0,7,3,1.3,LNG);
+ s+=CIL(24,17,0.1,3.4,GRN);s+=BOX(23.4,17,0,1.2,1.2,1.6,'#5a4326');
+
+ // ===== TAPAS KITCHEN (top-left corner) =====
+ s+=BOX(2,28,0,12,4,4.6,'#20180f');let kL=P(8,30,4.9);s+='<text x="'+kL[0]+'" y="'+kL[1]+'" fill="#9a8a5c" font-size="8.5" text-anchor="middle" font-weight="500">TAPAS KITCHEN</text>';
+
+ // ===== DIAGONAL TIERED AMPHITHEATER (corner, x:60-100) =====
+ const tiers=6,rh=1.35;
+ for(let i=0;i<tiers;i++){
+  let x0=60+i*6.2, y0=i*2.6, y1=32-i*2.6, z=i*rh;
+  if(y1<=y0) continue;
+  s+=BOX(x0,y0,z,100-x0,y1-y0,rh*0.85,i%2?BLK:SH(BLK,10));
+  // yellow bench seats along the outer (tall) edge of each tier
+  let nSeats=Math.max(2,Math.floor((y1-y0)/3.2));
+  for(let k=0;k<nSeats;k++){
+   let sy=y0+ (k+0.5)*(y1-y0)/nSeats;
+   s+=BOX(x0+1,sy-1.1,z+rh*0.85,3.4,2.2,1.1,YEL);
+  }
+ }
+ let aL=P(84,16,tiers*rh+2);s+='<text x="'+aL[0]+'" y="'+aL[1]+'" fill="'+YEL+'" font-size="11" text-anchor="middle" font-family="Cormorant Garamond" font-weight="700">TIERED AMPHITHEATER</text>';
+ s+='<text x="'+aL[0]+'" y="'+(aL[1]+13)+'" fill="#9c8a63" font-size="8.5" text-anchor="middle">diagonal corner seating</text>';
+
+ return s}
+
+// ===== OPEN TERRACE STRIPS for table layouts (avoid bar/lounge/pods/amphitheater/kitchen) =====
+// North strip: x 14-58, y 2-7 | East strip: x 44-58, y 9-27 | South strip: x 14-58, y 27-31 (kept clear near kitchen/host)
+const L=[
+{name:"1 · Classic Grid",seats:44,tables:11,sub:"Even 4-tops filling the open terrace strips around the fixed bar, lounge, and pods — efficient and simple to run.",dim:"North strip: 5 tables · South strip: 4 tables · East strip: 2 tables",feat:"Straightforward <b>11 four-top grid</b> across the terrace strips. Every table still gets pod/skyline views to the north and amphitheater energy to the east.",
+draw:function(){let s='';for(let i=0;i<5;i++){let x=15+i*8.6;s+=RT(x,3,4.2,3,2.6,'#7a5a2e')+RC(x,3,4.2,3,4)}for(let i=0;i<4;i++){let x=16+i*10.5;s+=RT(x,27.5,4.2,3,2.6,'#7a5a2e')+RC(x,27.5,4.2,3,4)}for(let i=0;i<2;i++){let y=11+i*8;s+=RT(45,y,4.2,3,2.6,'#7a5a2e')+RC(45,y,4.2,3,4)}return s}},
+
+{name:"2 · Booths Facing Pods",seats:38,tables:10,sub:"North-facing booths look straight out at the glass pods and skyline. High-tops fill the east strip near the bar.",dim:"6 banquette booths (north) · 4 high-tops (east)",feat:"<b>North booth row</b> directly faces the round glass pods and city view — the money seats. <b>High-tops</b> near the bar create a lounge flow toward the amphitheater.",
+draw:function(){let s='';for(let i=0;i<6;i++){let x=14+i*7.3;s+=RT(x,3,4,2.6,2.6,'#7a5a2e')+RC(x,3,4,2.6,4)}for(let i=0;i<4;i++){let y=10+i*4.5;s+=RD(46,y,1.7,2.9,'#c9a24b')+CO(46,y,2.4,2)}return s}},
+
+{name:"3 · Diagonal View-Facing",seats:40,tables:10,sub:"Tables staggered on a diagonal echoing the amphitheater's own diagonal cut — no two tables sit in a flat row.",dim:"Staggered rounds across all 3 strips",feat:"Offset diagonal placement <b>mirrors the amphitheater's diagonal geometry</b> instead of fighting it with a square grid — the room reads as one coherent shape.",
+draw:function(){let s='';let pts=[[16,3],[24,4.5],[32,3],[40,4.5],[16,29],[24,27.5],[32,29],[40,27.5],[46,12],[46,20]];for(const[x,y] of pts){s+=RD(x,y,2,2.8,'#7a5a2e')+CO(x,y,2.9,4)}return s}},
+
+{name:"4 · Communal Tables Near Bar",seats:42,tables:8,sub:"Large communal rounds anchor near the curved bar for groups; smaller 2-tops line the north edge for couples.",dim:"2 communal 8-tops (near bar) · 6 two-tops (north edge)",feat:"<b>2 large communal rounds</b> right next to the curved bar — natural spot for groups ordering bottle service. <b>2-tops along the pod-facing edge</b> for couples wanting the view.",
+draw:function(){let s='';s+=RD(44,10,3.4,3,'#c9a24b')+CO(44,10,4.6,8);s+=RD(44,24,3.4,3,'#c9a24b')+CO(44,24,4.6,8);for(let i=0;i<6;i++){let x=15+i*6;s+=RD(x,3.5,1.3,2.6,'#7a5a2e')+CO(x,3.5,2,2)}return s}},
+
+{name:"5 · Couples Row + Group Center",seats:36,tables:12,sub:"Intimate 2-tops on both north and south strips for couples; 6-top rounds in the east strip for groups near the bar.",dim:"8 two-tops (north+south) · 2 six-top rounds (east)",feat:"<b>2-top rounds</b> on both strips = max couple seating with skyline + amphitheater sightlines. <b>6-top rounds</b> near the bar for group dining before heading to the tiers.",
+draw:function(){let s='';for(let i=0;i<4;i++){let x=16+i*8;s+=RD(x,3.5,1.3,2.6,'#7a5a2e')+CO(x,3.5,2,2);s+=RD(x,29,1.3,2.6,'#7a5a2e')+CO(x,29,2,2)}for(let i=0;i<2;i++){let y=12+i*10;s+=RD(47,y,2.6,3,'#c9a24b')+CO(47,y,3.6,6)}return s}},
+
+{name:"6 · Lounge-Extended + Minimal Dining",seats:26,tables:7,sub:"Extends the lounge sofa zone further into the terrace for a bar-forward, cocktail-first concept with lighter dining coverage.",dim:"2 extra sofa zones · 5 dining tables",feat:"Best for a <b>bar/lounge-forward opening phase</b> — extends the sofa seating from the deck zone, keeps a lean dining count on the north strip while the amphitheater and bar carry the room.",
+draw:function(){let s='';s+=BOX(42,9,0,6,3,1.3,LNG);s+=RD(45,14,1.4,1.4,'#c9a24b');s+=BOX(42,20,0,6,3,1.3,LNG);s+=RD(45,25,1.4,1.4,'#c9a24b');for(let i=0;i<5;i++){let x=15+i*7.5;s+=RT(x,3,4,2.8,2.6,'#7a5a2e')+RC(x,3,4,2.8,4)}return s}},
+];
+
+const svg=document.getElementById('svg'),tabsEl=document.getElementById('tabs'),legEl=document.getElementById('legend');
+function legHTML(){return[['#f0c93a','Amphitheater seats'],['#161310','Tier steps'],['#7ecbe0','Glass pods'],['#e0b53a','Bar'],['#7a5a2e','Dining table'],['#c9a24b','Round/communal'],['#241a12','Lounge sofa'],['#20180f','Kitchen']].map(([c,l])=>'<span><span class="sw" style="background:'+c+'"></span>'+l+'</span>').join('')}
+let curIdx=0,tourOn=false,tourTimer=null;
+function render(i){let Ld=L[i];curIdx=i;allPts=[];let content=FIXED()+Ld.draw();
+ let minX=1/0,maxX=-1/0,minY=1/0,maxY=-1/0;for(const[x,y]of allPts){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y}
+ let cw=maxX-minX,ch=maxY-minY,scale=Math.min((1000-72)/cw,(620-72)/ch);let tx=(1000-cw*scale)/2-minX*scale,ty=(620-ch*scale)/2-minY*scale;
+ svg.innerHTML='<g class="scene" transform="translate('+tx+','+ty+') scale('+scale+')">'+content+'</g>';
+ document.getElementById('ptitle').textContent='Moon Steakhouse — '+Ld.name;document.getElementById('psub').textContent=Ld.sub;document.getElementById('pseats').textContent=Ld.seats;document.getElementById('ptables').textContent=Ld.tables;document.getElementById('pdim').innerHTML='<b>Dimensions:</b> '+Ld.dim;document.getElementById('pfeat').innerHTML='<b>Why this works:</b> '+Ld.feat;
+ [...tabsEl.children].forEach((t,idx)=>t.classList.toggle('active',idx===i))}
+function setView(v){VIEW=v;['iso','top','angle'].forEach(k=>document.getElementById('v-'+k).classList.toggle('active',k===v));render(curIdx)}
+function toggleTour(){tourOn=!tourOn;document.getElementById('v-tour').classList.toggle('active',tourOn);document.getElementById('v-tour').textContent=tourOn?'■ Stop':'▶ Auto Tour';if(tourOn){const seq=['iso','angle','top','angle'];let idx=0;tourTimer=setInterval(()=>{setView(seq[idx%seq.length]);idx++},2200)}else clearInterval(tourTimer)}
+L.forEach((Ld,i)=>{let b=document.createElement('div');b.className='tab';b.textContent='Layout '+(i+1);b.onclick=()=>render(i);tabsEl.appendChild(b)});
+legEl.innerHTML=legHTML();render(0);
+</script></body></html>
