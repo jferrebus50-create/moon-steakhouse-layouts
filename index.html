@@ -1,210 +1,38 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Moon Steakhouse — Layout Demos</title><style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moon Steakhouse — Layout Design</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#f0c93a;--gold-d:#a9822b;--bg:#0a0806;--card:#0f0c08;--border:#2c2412;--text:#e9d9ab;--muted:#9c8a63;--dim:#6c5e3e}
-body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;padding:14px 8px 24px}
-.w{max-width:1060px;margin:0 auto}
-.hdr{text-align:center;margin-bottom:6px}
-.mn{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f6e7b0,#f0c93a 50%,#8a6d1f);margin:0 auto 6px;box-shadow:0 0 28px 4px rgba(240,201,58,.45)}
-.hdr h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:32px;letter-spacing:2px;background:linear-gradient(180deg,#f6e7b0,#f0c93a 55%,#a9822b);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hdr .sb{color:var(--muted);font-size:11.5px;margin-top:3px}
-.chips{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:10px 0 6px}
-.chip{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:4px 10px;border-radius:999px;font-size:11px}.chip b{color:#f0dfa9}
-.ctrl{display:flex;gap:5px;justify-content:center;margin:4px 0 8px;flex-wrap:wrap}
-.btn{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:6px 13px;border-radius:8px;font-size:11.5px;cursor:pointer;font-weight:500;transition:.15s}.btn:hover{border-color:var(--gold);color:#f2e2ac}.btn.active{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1206;border-color:var(--gold)}
-.tabs{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:4px 0 10px}
-.tab{background:#14100a;border:1px solid #3a2f18;color:var(--muted);padding:7px 12px;border-radius:999px;font-size:12px;cursor:pointer;transition:.18s;font-weight:500}.tab:hover{border-color:var(--gold);color:#c9b57e}.tab.active{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1206;border-color:var(--gold);box-shadow:0 0 12px rgba(240,201,58,.35)}
-.panel{background:linear-gradient(180deg,var(--card),#080604);border:1px solid var(--border);border-radius:14px;padding:16px 14px 8px;box-shadow:0 0 40px rgba(0,0,0,.6),inset 0 0 60px rgba(240,201,58,.02)}
-.ptop{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px}
-.ptitle{font-family:Cormorant Garamond,serif;font-size:23px;color:#f0dfa9;font-weight:600}
-.psub{color:#8f7c50;font-size:12px;margin-top:3px;max-width:620px;line-height:1.45}
-.stats{display:flex;gap:16px;flex-shrink:0}.stat{font-size:10.5px;color:#c9b57e;text-align:right}.stat b{color:#f0dfa9;font-size:18px;display:block;font-family:Cormorant Garamond,serif}
-.stage{width:100%;overflow:hidden;border-radius:8px;margin-top:10px;background:#0c0a06}
-svg{width:100%;height:auto;display:block}
-.legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 4px 2px;font-size:11px;color:#b8a670}.legend span{display:inline-flex;align-items:center;gap:4px}.sw{width:11px;height:11px;border-radius:2px;display:inline-block;flex-shrink:0}
-.feat{margin:4px 4px 10px;font-size:12px;color:#a89466;line-height:1.6}.feat b{color:#e9d9ab}
-.dim{font-size:11px;color:var(--dim);margin:3px 4px 8px}.dim b{color:var(--muted)}
-.note{text-align:center;color:var(--dim);font-size:10.5px;margin-top:14px;line-height:1.7}.note b{color:var(--muted)}
-</style></head><body><div class="w">
-<div class="hdr"><div class="mn"></div><h1>MOON STEAKHOUSE</h1><div class="sb">Rooftop Skyline Dining · ~3,000 sq ft · Floor 24 + VIP Floor 25 · Medellín</div></div>
-<div class="chips">
-<span class="chip">🪜 <b>Diagonal Amphitheater</b></span>
-<span class="chip">🍸 <b>Bar Under Stairs</b></span>
-<span class="chip">🛰️ <b>Glass Skywalk 2×15m</b></span>
-<span class="chip">📺 <b>Giant Screen</b></span>
-<span class="chip">🍴 <b>Tapas Kitchen</b></span>
-<span class="chip">🌿 <b>Garden Canopy</b></span>
-<span class="chip">🔭 <b>VIP Deck</b></span>
+body{background:#0a0806;color:#e9d9ab;font-family:Poppins,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 16px}
+.mn{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f2f0b0,#dde05a 50%,#7c8020);margin:0 auto 12px;box-shadow:0 0 36px 6px rgba(221,224,90,.4)}
+h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:36px;letter-spacing:3px;text-align:center;background:linear-gradient(180deg,#f2f0b0,#dde05a 55%,#7c8020);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:4px}
+.sub{color:#9c8a63;font-size:13px;text-align:center;margin-bottom:28px}
+.cards{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;max-width:700px}
+.card{background:#14100a;border:1px solid #3a2f18;border-radius:14px;overflow:hidden;cursor:pointer;transition:.2s;text-decoration:none;color:inherit;flex:1;min-width:280px}
+.card:hover{border-color:#dde05a;transform:translateY(-3px);box-shadow:0 10px 40px rgba(221,224,90,.15)}
+.card-img{width:100%;height:160px;object-fit:cover;display:block;opacity:.85;transition:.2s}
+.card:hover .card-img{opacity:1}
+.card-body{padding:16px}
+.card-title{font-family:Cormorant Garamond,serif;font-size:20px;font-weight:600;color:#f0dfa9}
+.card-desc{color:#8f7c50;font-size:12px;margin-top:4px;line-height:1.5}
+.note{color:#6c5e3e;font-size:11px;text-align:center;margin-top:24px;line-height:1.6}
+</style></head><body>
+<div class="mn"></div>
+<h1>MOON STEAKHOUSE</h1>
+<div class="sub">Rooftop Skyline Dining · Floor 24 · ~3,000 sq ft · Medellín</div>
+<div class="cards">
+<a class="card" href="proposals.html">
+<img class="card-img" src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/d30338383_generated_image.png">
+<div class="card-body">
+<div class="card-title">Layout Proposals</div>
+<div class="card-desc">Two floor plan options with table distribution, seating capacity, and isometric renders matching the real architect Enscape visuals.</div>
+</div></a>
+<a class="card" href="walkthrough.html">
+<img class="card-img" src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/ee92c6627_generated_image.png">
+<div class="card-body">
+<div class="card-title">First-Person Walkthrough</div>
+<div class="card-desc">Crescent bar at night, terrace overview, and the glass skywalk — four scenes showing the space from different angles.</div>
+</div></a>
 </div>
-<div class="ctrl">
-<button class="btn active" id="v-iso" onclick="setView('iso')">3D Isometric</button>
-<button class="btn" id="v-top" onclick="setView('top')">Top-Down</button>
-<button class="btn" id="v-angle" onclick="setView('angle')">Low Angle</button>
-<button class="btn" id="v-tour" onclick="toggleTour()">▶ Auto Tour</button>
-</div>
-<div class="tabs" id="tabs"></div>
-<div class="panel">
-<div class="ptop"><div><div class="ptitle" id="ptitle"></div><div class="psub" id="psub"></div></div><div class="stats"><div class="stat"><b id="pseats"></b>seats</div><div class="stat"><b id="ptables"></b>tables</div></div></div>
-<div class="stage"><svg id="svg" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet"></svg></div>
-<div class="dim" id="pdim"></div>
-<div class="legend" id="legend"></div>
-<div class="feat" id="pfeat"></div>
-</div>
-<div class="note">Fixed architecture: <b>bar under diagonal amphitheater stairs</b>, <b>curved bar</b>, <b>glass skywalk 2m×15m</b>, <b>giant screen</b>, <b>tapas kitchen</b>. Canopy roof covers the enclosed VIP/kitchen room + bar walkway only — the <b>amphitheater is open-air under the sky</b> (matches real architect renders). Only the open-terrace table arrangements change between layouts.</div>
-</div>
-<script>
-let VIEW='iso';const SC=8,A=Math.PI/6;let allPts=[];
-function P(x,y,z){let rx,ry;
- if(VIEW==='top'){rx=x*SC;ry=y*SC*1.08}
- else if(VIEW==='angle'){rx=(x-y)*Math.cos(A)*SC*.92;ry=(x+y)*Math.sin(A)*SC*.92-z*SC*1.5}
- else{rx=(x-y)*Math.cos(A)*SC;ry=(x+y)*Math.sin(A)*SC-z*SC}
- allPts.push([rx,ry]);return[rx,ry]}
-function PP(a){return a.map(p=>p.join(',')).join(' ')}
-function SH(h,amt){let c=h.replace('#',''),n=parseInt(c,16),r=Math.max(0,Math.min(255,(n>>16)+amt)),g=Math.max(0,Math.min(255,((n>>8)&255)+amt)),b=Math.max(0,Math.min(255,(n&255)+amt));return'#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}
-function BOX(x,y,z,w,d,h,c){let t=[P(x,y,z+h),P(x+w,y,z+h),P(x+w,y+d,z+h),P(x,y+d,z+h)];if(VIEW==='top')return'<polygon points="'+PP(t)+'" fill="'+SH(c,25)+'" stroke="'+SH(c,-50)+'" stroke-width="1"/>';let r=[P(x+w,y,z+h),P(x+w,y+d,z+h),P(x+w,y+d,z),P(x+w,y,z)];let f=[P(x,y+d,z+h),P(x+w,y+d,z+h),P(x+w,y+d,z),P(x,y+d,z)];return'<polygon points="'+PP(f)+'" fill="'+SH(c,-55)+'" stroke="'+SH(c,-70)+'" stroke-width="1"/><polygon points="'+PP(r)+'" fill="'+SH(c,-28)+'" stroke="'+SH(c,-70)+'" stroke-width="1"/><polygon points="'+PP(t)+'" fill="'+SH(c,25)+'" stroke="'+SH(c,-50)+'" stroke-width="1"/>'}
-function GBOX(x,y,z,w,d,h,c){let t=[P(x,y,z+h),P(x+w,y,z+h),P(x+w,y+d,z+h),P(x,y+d,z+h)];let r=[P(x+w,y,z+h),P(x+w,y+d,z+h),P(x+w,y+d,z),P(x+w,y,z)];let f=[P(x,y+d,z+h),P(x+w,y+d,z+h),P(x+w,y+d,z),P(x,y+d,z)];return'<polygon points="'+PP(f)+'" fill="'+c+'" opacity=".32" stroke="'+SH(c,40)+'" stroke-width="1"/><polygon points="'+PP(r)+'" fill="'+c+'" opacity=".22" stroke="'+SH(c,40)+'" stroke-width="1"/><polygon points="'+PP(t)+'" fill="'+c+'" opacity=".45" stroke="'+SH(c,50)+'" stroke-width="1"/>'}
-function CIR(cx,cy,z,r,c,n){n=n||18;let a=[];for(let i=0;i<n;i++){let an=(i/n)*Math.PI*2;a.push(P(cx+Math.cos(an)*r,cy+Math.sin(an)*r,z))}return'<polygon points="'+PP(a)+'" fill="'+SH(c,25)+'" stroke="'+SH(c,-50)+'" stroke-width="1"/>'}
-function CIL(cx,cy,z,r,c){let a=[];for(let i=0;i<14;i++){let an=(i/14)*Math.PI*2;a.push(P(cx+Math.cos(an)*r,cy+Math.sin(an)*r,z))}return'<polygon points="'+PP(a)+'" fill="'+SH(c,15)+'" stroke="'+SH(c,-60)+'" stroke-width=".8"/>'}
-function SHD(cx,cy,r){let a=[];for(let i=0;i<14;i++){let an=(i/14)*Math.PI*2;a.push(P(cx+Math.cos(an)*r*1.1,cy+Math.sin(an)*r*1.1,.02))}return'<polygon points="'+PP(a)+'" fill="#000" opacity=".3"/>'}
-function RT(x,y,w,d,h,c){return SHD(x+w/2,y+d/2,Math.max(w,d)/1.4)+BOX(x,y,0,w,d,h,c)}
-function RC(x,y,w,d,n){let s='',nL=Math.round(n/2);for(let i=0;i<nL;i++){let t=(i+.5)/nL;s+=CIL(x+t*w,y-1.4,.9,.78,'#241a0c');s+=CIL(x+t*w,y+d+1.4,.9,.78,'#241a0c')}return s}
-function RD(cx,cy,r,h,c){return SHD(cx,cy,r+2)+'<line x1="'+P(cx,cy,h)[0]+'" y1="'+P(cx,cy,h)[1]+'" x2="'+P(cx,cy,.05)[0]+'" y2="'+P(cx,cy,.05)[1]+'" stroke="#4a3a1e" stroke-width="2"/>'+CIR(cx,cy,h,r,c)}
-function CO(cx,cy,orb,n,off){off=off||0;let s='';for(let i=0;i<n;i++){let a=(i/n)*Math.PI*2+off;s+=CIL(cx+Math.cos(a)*orb,cy+Math.sin(a)*orb,.9,.78,'#241a0c')}return s}
-function CHAIRS_ROW(x,y,w,n,c){
- let s='';for(let i=0;i<n;i++){let t=(i+.5)/n;s+=CIL(x+t*w,y-1.4,.9,.78,c);s+=CIL(x+t*w,y+1.4,.9,.78,c)}return s}
-
-const Y='#dde05a',YD='#a3a83f',BLK='#141210',BLK2='#1c1814',WD='#8a6a3a',WD2='#6a4a22',BAR_C='#dde05a',GRN='#5a8a4a',LNG='#2a1e14',STN='#2a2218';
-
-
-function FIXED(){let s='';
- s+='<defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f0c93a" stop-opacity="0"/><stop offset=".5" stop-color="#f0c93a" stop-opacity=".3"/><stop offset="1" stop-color="#f0c93a" stop-opacity="0"/></linearGradient><radialGradient id="mg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f6e7b0"/><stop offset="55%" stop-color="#f0c93a"/><stop offset="100%" stop-color="#8a6d1f" stop-opacity="0"/></radialGradient></defs>';
- // FLOOR
- let fl=[P(0,0,0),P(100,0,0),P(100,32,0),P(0,32,0)];s+='<polygon points="'+PP(fl)+'" fill="#121009" stroke="#2a2213" stroke-width="1.2"/>';
- for(let i=10;i<100;i+=10){let a=P(i,0,.01),b=P(i,32,.01);s+='<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="#1e1810" stroke-width=".5"/>'}
- // MOON
- let mp=P(94,-5,19);s+='<circle cx="'+mp[0]+'" cy="'+mp[1]+'" r="26" fill="url(#mg)" opacity=".8"/>';
- // CITY GLOW
- let w=[P(2,0,0),P(58,0,0),P(58,1.3,0),P(2,1.3,0)];s+='<polygon points="'+PP(w)+'" fill="url(#gl)" opacity=".5"/>';
- let c1=[];for(let i=0;i<=14;i++){c1.push(P(2+i*4,0,0))}for(let i=14;i>=0;i--){c1.push(P(2+i*4,0,1+Math.sin(i*1.1)*.9+Math.cos(i*.6)*.5))}s+='<polygon points="'+PP(c1)+'" fill="#0a1420" opacity=".55"/>';
-
- // ===== GLASS SKYWALK (2m x 15m overhang, from the view edge southward) =====
- let sw=[P(5,0.5,0),P(20,0.5,0),P(20,2,2.8),P(5,2,2.8)];s+='<polygon points="'+PP(sw)+'" fill="#2c4a52" opacity=".25" stroke="#7ababa" stroke-width="1"/>';
- let swL=P(12.5,1.5,3);s+='<text x="'+swL[0]+'" y="'+swL[1]+'" fill="#7ababa" font-size="8" text-anchor="middle">SKYWALK 2m×15m</text>';
-
- // ===== DIAGONAL TIERED AMPHITHEATER (cuts across corner, x:58-100) =====
- const tiers=6,rh=1.4;
- for(let i=0;i<tiers;i++){
-  let x0=58+i*6.5, y0=i*2.4, y1=32-i*2.2, z=i*rh;
-  if(y1<=y0+1) continue;
-  s+=BOX(x0,y0,z,100-x0,y1-y0,rh*0.82,i%2?BLK:BLK2);
-  // yellow bench seats
-  let nB=Math.max(2,Math.floor((y1-y0)/3));
-  for(let k=0;k<nB;k++){
-   let sy=y0+(k+.5)*(y1-y0)/nB;
-   s+=BOX(x0+1,sy-1,z+rh*0.82,3.2,1.8,1.1,Y);
-  }
- }
- let aL=P(84,15,tiers*rh+2.2);s+='<text x="'+aL[0]+'" y="'+aL[1]+'" fill="'+Y+'" font-size="12" text-anchor="middle" font-family="Cormorant Garamond" font-weight="700">AMPHITHEATER</text>';
- s+='<text x="'+aL[0]+'" y="'+(aL[1]+13)+'" fill="'+SH(Y,-80)+'" font-size="8.5" text-anchor="middle">→ VIP Floor 25</text>';
-
- // ===== CURVED BAR UNDER THE AMPHITHEATER (north side, under tier base) =====
- // The bar wraps in a crescent under the low end of the amphitheater
- for(let i=0;i<10;i++){
-  let t=i/9,an=-1.8+t*1.5;
-  let cx=72+Math.cos(an)*10, cy=4+Math.sin(an)*8;
-  let nx=cx+Math.cos(an+1.57)*1.5, ny=cy+Math.sin(an+1.57)*1.5;
-  let bx=Math.min(cx,nx)-.5, by=Math.min(cy,ny)-.5;
-  let bw=Math.abs(nx-cx)+1, bd=Math.abs(ny-cy)+1;
-  s+=BOX(bx,by,0,bw,bd,3.4,BAR_C);
- }
- let barL=P(72,3,3.8);s+='<text x="'+barL[0]+'" y="'+barL[1]+'" fill="#1a1206" font-size="10" text-anchor="middle" font-weight="700" style="paint-order:stroke" stroke="'+BAR_C+'" stroke-width="3">BAR</text>';
- // bar stools
- for(let i=0;i<6;i++){s+=CIL(65+i*2.5,1.5,1.5,.78,'#241a0c')}
-
- // ===== LOUNGE DECK (wood platform, center area) =====
- let deck=[P(36,8,.05),P(56,8,.05),P(56,26,.05),P(36,26,.05)];s+='<polygon points="'+PP(deck)+'" fill="'+WD+'" opacity=".22"/>';
- s+=BOX(37,20,0,7,3,1.2,LNG);s+=BOX(37,10,0,7,3,1.2,LNG);
- // tree
- s+=CIL(50,17,0.1,3.2,GRN);s+=BOX(49.4,17,0,1.2,1.2,1.5,'#5a4326');
-
- // ===== TAPAS KITCHEN (top-left corner) =====
- s+=BOX(2,27,0,14,5,4.8,'#1c1410');let kL=P(9,29.5,5.1);s+='<text x="'+kL[0]+'" y="'+kL[1]+'" fill="#9a8a5c" font-size="9" text-anchor="middle" font-weight="500">TAPAS KITCHEN</text>';
-
- // ===== GIANT SCREEN (near y=0 wall, near the view edge and terrace) =====
- let sc=[P(34,.3,3.5),P(54,.3,3.5),P(54,.3,8),P(34,.3,8)];s+='<polygon points="'+PP(sc)+'" fill="#1a1810" stroke="#3a3020" stroke-width="1" opacity=".92"/>';
- let scL=P(44,.2,5.8);s+='<text x="'+scL[0]+'" y="'+scL[1]+'" fill="'+Y+'" font-size="9" text-anchor="middle" opacity=".6">GIANT SCREEN</text>';
-
- // ===== ROOFTOP GARDEN CANOPY (yellow curved roof above) =====
- let cn=[P(8,3,14.5),P(70,2,16),P(78,22,15),P(18,28,14)];
- s+='<polygon points="'+PP(cn)+'" fill="'+Y+'" opacity=".15" stroke="'+Y+'" stroke-width="1" opacity=".25"/>';
- let cnL=P(40,12,15.5);s+='<text x="'+cnL[0]+'" y="'+cnL[1]+'" fill="#d8c14a" font-size="8.5" text-anchor="middle" opacity=".6">GARDEN CANOPY</text>';
- for(let i=0;i<8;i++){let gx=12+i*6.5,gp=P(gx,4,14.8);s+='<circle cx="'+gp[0]+'" cy="'+gp[1]+'" r="2" fill="'+GRN+'" opacity=".45"/>'}
-
- return s}
-
-// ===== OPEN TERRACE ZONES for table layouts =====
-// Available: North strip x:34-56 y:2-7 | South strip x:4-34 y:22-27 (near kitchen) | Center-lower x:4-34 y:5-20 | Center x:36-56 y:9-7(y=8-20 but deck occupies)
-const L=[
-{name:"1 · Classic Grid",seats:48,tables:12,
-sub:"Straight 4-top grid filling the open terrace. Clean service lanes, simple to run, every seat faces the giant screen and city view.",
-dim:"3 rows × 4 cols · 4ft tables · 4ft aisles",
-feat:"Straightforward <b>12 four-top grid</b> in the open terrace. Highest cover count for volume nights. Clean sightlines to screen and skyline.",
-draw:function(){let s='';for(let r=0;r<3;r++)for(let c=0;c<4;c++){let x=5+c*8,y=4+r*7;s+=RT(x,y,4,3.5,2.6,WD)+RC(x,y,4,3.5,4)}return s}},
-
-{name:"2 · Booths + High-Tops",seats:40,tables:11,
-sub:"Banquette booths face the open skyline edge for city-view dining; round high-tops near the bar create a cocktail-lounge flow.",
-dim:"6 banquette booths (north) · 5 high-top rounds (near bar)",
-feat:"<b>North-facing booths</b> look straight out at the open skyline edge and city. <b>High-top rounds</b> near the curved bar create lounge energy before the amphitheater.",
-draw:function(){let s='';for(let i=0;i<6;i++){let x=34+i*4;s+=RT(x,3,3.5,3,2.6,WD)+RC(x,3,3.5,3,4)}for(let i=0;i<5;i++){s+=RD(5+i*6,14,1.7,2.8,BAR_C)+CO(5+i*6,14,2.4,2)}return s}},
-
-{name:"3 · Diagonal View-Facing",seats:44,tables:11,
-sub:"Tables staggered diagonally echoing the amphitheater's own diagonal cut — no two tables sit in a flat row, every seat gets a view.",
-dim:"Staggered rounds across open terrace · 46in tables",
-feat:"Offset diagonal placement <b>mirrors the amphitheater geometry</b> — the room reads as one coherent diagonal shape instead of a grid fighting the corner cut.",
-draw:function(){let s='';let pts=[[5,4],[13,5.5],[21,4],[29,5.5],[5,14],[13,15],[21,14],[29,15],[36,4],[44,5],[36,14]];for(const[x,y] of pts){s+=RD(x,y,2,2.8,WD)+CO(x,y,2.9,4)}return s}},
-
-{name:"4 · Communal Near Bar",seats:46,tables:9,
-sub:"Large communal rounds anchor near the curved bar for group dining; intimate 2-tops line the view edge for couples.",
-dim:"2 communal 8-tops (near bar) · 7 two-tops (north edge)",
-feat:"<b>2 large communal rounds</b> near the bar — natural spot for groups ordering bottle service. <b>2-tops along the view edge</b> for couples wanting the skyline.",
-draw:function(){let s='';s+=RD(14,10,3.4,3,YD)+CO(14,10,4.6,8);s+=RD(14,20,3.4,3,YD)+CO(14,20,4.6,8);for(let i=0;i<7;i++){let x=34+i*3.5;s+=RD(x,4,1.3,2.5,WD)+CO(x,4,2,2)}return s}},
-
-{name:"5 · Couples + Groups",seats:38,tables:12,
-sub:"Intimate 2-tops line both the north and south edges for couples; 6-top rounds in the center for group dining near the screen.",
-dim:"8 two-tops (north+south) · 2 six-top rounds (center)",
-feat:"<b>2-top rounds</b> on both strips = max couple seating with skyline and screen views. <b>6-top rounds</b> in center anchor group dining before heading to the amphitheater tiers.",
-draw:function(){let s='';for(let i=0;i<4;i++){let x=34+i*6;s+=RD(x,4,1.3,2.5,WD)+CO(x,4,2,2);s+=RD(x,26,1.3,2.5,WD)+CO(x,26,2,2)}for(let i=0;i<2;i++){let y=10+i*8;s+=RD(8+i*18,y,2.6,3,YD)+CO(8+i*18,y,3.6,6)}return s}},
-
-{name:"6 · Lounge-Extended",seats:28,tables:7,
-sub:"Extends the lounge sofa zone into the terrace for a bar-forward, cocktail-first concept with lighter dining coverage.",
-dim:"3 extra sofa zones · 5 dining tables",
-feat:"Best for a <b>bar/lounge-forward opening phase</b> — extends sofa seating from the deck, keeps lean dining count while the amphitheater and bar carry the room.",
-draw:function(){let s='';s+=BOX(36,9,0,6,3,1.2,LNG);s+=RD(39,13,1.4,1.4,BAR_C);s+=BOX(36,20,0,6,3,1.2,LNG);s+=RD(39,24,1.4,1.4,BAR_C);s+=BOX(4,4,0,7,3,1.2,LNG);s+=RD(7,8,1.4,1.4,BAR_C);for(let i=0;i<4;i++){let x=15+i*5;s+=RT(x,4,4,3,2.6,WD)+RC(x,4,4,3,4)}return s}},
-
-{name:"7 · Chef's Counter",seats:42,tables:9,
-sub:"An open grill chef's counter as the centerpiece with wraparound stool seating — dinner and a show near the tapas kitchen.",
-dim:"Centerpiece counter: 16ft × 5ft · 12 counter stools · 6 surrounding tables",
-feat:"Centerpiece <b>open-grill chef's counter</b> with 12 wraparound stools — signature steakhouse feature. Surrounding tables fill the open terrace with 2/4-tops.",
-draw:function(){let s='';s+=BOX(6,12,0,16,6,3.4,'#3a2c18');s+=CIR(14,15,3.4,6,'#4a3a22',24);for(let i=0;i<5;i++)s+=CIL(8+i*3,9.5,1.4,.8,'#241a0c');for(let i=0;i<5;i++)s+=CIL(8+i*3,20.5,1.4,.8,'#241a0c');s+=CIL(5,15,1.4,.8,'#241a0c');s+=CIL(23,15,1.4,.8,'#241a0c');for(const[x,y]of[[34,4],[34,14],[34,24],[48,4],[48,14]])s+=RT(x,y,4,3,2.6,WD)+RC(x,y,4,3,4);return s}},
-
-{name:"8 · Tiered Platform",seats:40,tables:10,
-sub:"Two raised platform zones echo the amphitheater tiers — back tables sit higher with unobstructed views over the front.",
-dim:"Platform 1: +18in · Platform 2: +36in · echoes amphitheater",
-feat:"Echoes the <b>tiered amphitheater</b> — <b>2 raised platforms</b> give back tables clean skyline views over the front. Combined with the stairs and giant screen, the space feels like a <b>stadium dining experience</b>.",
-draw:function(){let s='';s+=BOX(34,2,0,20,12,1.5,STN);s+=BOX(34,18,0,20,10,3.2,SH(STN,10));for(let i=0;i<3;i++){let y=4+i*4;s+=RD(38+i*2,y,1.8,2.6,WD)+CO(38+i*2,y,2.6,4);s+=RD(46+i*2,y,2,3.8,YD)+CO(46+i*2,y,3,4)}for(let i=0;i<3;i++){let y=20+i*3;s+=RD(38,y,2,4.8,YD)+CO(38,y,3,4);s+=RD(47,y,2,5.8,YD)+CO(47,y,3,4)}for(let i=0;i<4;i++){s+=RT(5+i*6,4,4,3,2.6,WD)+RC(5+i*6,4,4,3,4)}return s}},
-];
-
-const svg=document.getElementById('svg'),tabsEl=document.getElementById('tabs'),legEl=document.getElementById('legend');
-function legHTML(){return[['#dde05a','Amphitheater seats'],['#141210','Tier steps'],['#dde05a','Bar'],['#2c4a52','Skywalk'],['#8a6a3a','Dining table'],['#a3a83f','Communal'],['#2a1e14','Lounge sofa'],['#1c1410','Kitchen']].map(([c,l])=>'<span><span class="sw" style="background:'+c+'"></span>'+l+'</span>').join('')}
-let curIdx=0,tourOn=false,tourTimer=null;
-function render(i){let Ld=L[i];curIdx=i;allPts=[];let content=FIXED()+Ld.draw();
- let minX=1/0,maxX=-1/0,minY=1/0,maxY=-1/0;for(const[x,y]of allPts){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y}
- let cw=maxX-minX,ch=maxY-minY,scale=Math.min((1000-72)/cw,(620-72)/ch);let tx=(1000-cw*scale)/2-minX*scale,ty=(620-ch*scale)/2-minY*scale;
- svg.innerHTML='<g class="scene" transform="translate('+tx+','+ty+') scale('+scale+')">'+content+'</g>';
- document.getElementById('ptitle').textContent='Moon Steakhouse — '+Ld.name;document.getElementById('psub').textContent=Ld.sub;document.getElementById('pseats').textContent=Ld.seats;document.getElementById('ptables').textContent=Ld.tables;document.getElementById('pdim').innerHTML='<b>Dimensions:</b> '+Ld.dim;document.getElementById('pfeat').innerHTML='<b>Why this works:</b> '+Ld.feat;
- [...tabsEl.children].forEach((t,idx)=>t.classList.toggle('active',idx===i))}
-function setView(v){VIEW=v;['iso','top','angle'].forEach(k=>document.getElementById('v-'+k).classList.toggle('active',k===v));render(curIdx)}
-function toggleTour(){tourOn=!tourOn;document.getElementById('v-tour').classList.toggle('active',tourOn);document.getElementById('v-tour').textContent=tourOn?'■ Stop':'▶ Auto Tour';if(tourOn){const seq=['iso','angle','top','angle'];let idx=0;tourTimer=setInterval(()=>{setView(seq[idx%seq.length]);idx++},2200)}else clearInterval(tourTimer)}
-L.forEach((Ld,i)=>{let b=document.createElement('div');b.className='tab';b.textContent='Layout '+(i+1);b.onclick=()=>render(i);tabsEl.appendChild(b)});
-legEl.innerHTML=legHTML();render(0);
-</script></body></html>
+<div class="note">Crescent moon-shaped bar under the stairs · Stairs on right going up to back · Open-air amphitheater · No glass pods<br>Chartreuse-yellow + black · White perforated facade · Canopy over VIP room only</div>
+</body></html>
