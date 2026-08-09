@@ -1,16 +1,15 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><title>Moon Steakhouse — Walkthrough</title><style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#f0c93a;--gold-d:#a9822b;--bg:#0a0806;--card:#0f0c08;--border:#2c2412;--text:#e9d9ab;--muted:#9c8a63;--dim:#6c5e3e}
-body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;padding:14px 8px 24px}
+body{background:#0a0806;color:#e9d9ab;font-family:Poppins,sans-serif;padding:14px 8px 24px}
 .w{max-width:1060px;margin:0 auto}
 .hdr{text-align:center;margin-bottom:6px}
-.mn{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f6e7b0,#f0c93a 50%,#8a6d1f);margin:0 auto 6px;box-shadow:0 0 28px 4px rgba(240,201,58,.45)}
-.hdr h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:32px;letter-spacing:2px;background:linear-gradient(180deg,#f6e7b0,#f0c93a 55%,#a9822b);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hdr .sb{color:var(--muted);font-size:11.5px;margin-top:3px}
+.mn{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f2f0b0,#dde05a 50%,#7c8020);margin:0 auto 6px;box-shadow:0 0 28px 4px rgba(221,224,90,.45)}
+.hdr h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:32px;letter-spacing:2px;background:linear-gradient(180deg,#f2f0b0,#dde05a 55%,#7c8020);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hdr .sb{color:#9c8a63;font-size:11.5px;margin-top:3px}
 .tabs{display:flex;gap:4px;justify-content:center;margin:14px 0 10px;flex-wrap:wrap}
-.tab{background:#14100a;border:1px solid #3a2f18;color:var(--muted);padding:7px 12px;border-radius:999px;font-size:12px;cursor:pointer;transition:.18s;font-weight:500}.tab:hover{border-color:var(--gold);color:#c9b57e}.tab.active{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1206;border-color:var(--gold);box-shadow:0 0 12px rgba(240,201,58,.35)}
-.scene-box{background:linear-gradient(180deg,var(--card),#080604);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.6)}
+.tab{background:#14100a;border:1px solid #3a2f18;color:#9c8a63;padding:7px 12px;border-radius:999px;font-size:12px;cursor:pointer;transition:.18s;font-weight:500}.tab:hover{border-color:#dde05a;color:#c9b57e}.tab.active{background:linear-gradient(135deg,#dde05a,#a3a83f);color:#1a1206;border-color:#dde05a;box-shadow:0 0 12px rgba(221,224,90,.35)}
+.scene-box{background:linear-gradient(180deg,#0f0c08,#080604);border:1px solid #2c2412;border-radius:14px;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.6)}
 .scene-img{width:100%;display:block}
 .scene-info{padding:16px 14px}
 .scene-title{font-family:Cormorant Garamond,serif;font-size:22px;color:#f0dfa9;font-weight:600}
@@ -18,16 +17,17 @@ body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;paddi
 .scene-features{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .feat-tag{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:3px 9px;border-radius:6px;font-size:10.5px}
 .nav-row{display:flex;gap:6px;justify-content:center;margin:10px 0}
-.nav-btn{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;font-weight:500;transition:.15s}.nav-btn:hover{border-color:var(--gold);color:#f2e2ac}
+.nav-btn{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;font-weight:500;transition:.15s}.nav-btn:hover{border-color:#dde05a;color:#f2e2ac}
 .dots{display:flex;gap:5px;justify-content:center;margin:8px 0}
-.dot{width:8px;height:8px;border-radius:50%;background:#2c2412;cursor:pointer;transition:.18s}.dot.active{background:var(--gold);box-shadow:0 0 6px rgba(240,201,58,.5)}
-.link{display:block;text-align:center;margin-top:14px;padding:10px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1206;border-radius:10px;text-decoration:none;font-weight:600;font-size:13px;transition:.15s}.link:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(240,201,58,.3)}
-.note{text-align:center;color:var(--dim);font-size:10.5px;margin-top:14px;line-height:1.7}
+.dot{width:8px;height:8px;border-radius:50%;background:#2c2412;cursor:pointer;transition:.18s}.dot.active{background:#dde05a;box-shadow:0 0 6px rgba(221,224,90,.5)}
+.link{display:block;text-align:center;margin-top:14px;padding:10px;background:linear-gradient(135deg,#dde05a,#a3a83f);color:#1a1206;border-radius:10px;text-decoration:none;font-weight:600;font-size:13px;transition:.15s}.link:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(221,224,90,.3)}
+.note{text-align:center;color:#6c5e3e;font-size:10.5px;margin-top:14px;line-height:1.7}
 </style></head><body><div class="w">
 <div class="hdr"><div class="mn"></div><h1>MOON STEAKHOUSE</h1><div class="sb">First-Person Walkthrough · Rooftop Skyline Dining · Medellín</div></div>
 <div class="tabs">
 <div class="tab active" onclick="location.href='#walkthrough'">Walkthrough</div>
 <div class="tab" onclick="location.href='index.html'">Layout Demos</div>
+<div class="tab" onclick="location.href='proposals.html'">Layout Proposals</div>
 </div>
 
 <div class="scene-box" id="walkthrough">
@@ -47,23 +47,23 @@ body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;paddi
 
 <a class="link" href="index.html">View Interactive Table Layout Demos →</a>
 
-<div class="note">First-person AI renders based on video walkthroughs and architectural references.<br>Bar under amphitheater stairs · Round glass pods · Glass skywalk 2m×15m · Giant screen · VIP Floor 25<br>These are concept renders — actual finishes may vary.</div>
+<div class="note">First-person AI renders matching the real architect Enscape renders — chartreuse-yellow/black amphitheater, white perforated facade, no glass pods.<br>Bar under amphitheater stairs · Open-air tiered seating · Canopy over VIP box only · Glass skywalk 2m×15m · VIP Floor 25<br>These are concept renders — actual finishes may vary.</div>
 </div>
 
 <script>
 const SCENES=[
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/66fab4a46_generated_image.png',
-title:'Walking In — The Terrace',
-desc:'You step out of the elevator on Floor 24. Before you: the entire open-air terrace unfolds — a curved bar glowing amber under the monumental amphitheater staircase, round glass pods cantilevered off the edge with panoramic city views, and the yellow canopy roof floating above with its rooftop garden.',
-feats:['Curved bar under stairs','Round glass pods','City panorama','Garden canopy','Giant screen']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/82d797fce_generated_image.png',
-title:'At The Bar — Looking Up',
-desc:'Standing at the curved bar, you look up through the open-riser steel staircase. Yellow bench seating on black tiered steps rises above you — this is the amphitheater, where guests sit with cocktails and take in the view. Through the open risers, you can see the city skyline beyond.',
-feats:['Bar under stairs','Open-riser staircase','Amphitheater seating','Yellow + black palette','City through risers']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/5e4f67a02_generated_image.png',
-title:'Inside A Glass Pod — The View',
-desc:'Seated inside one of the round glass pods cantilevered off the building edge. You\'re looking out through curved glass walls at Medellín\'s mountains, the baseball stadium, and city lights at dusk. An intimate table for 4, warm gold lighting, dark leather seats. Through the glass behind you, the main terrace with the amphitheater staircase glows.',
-feats:['Round glass pod','Cantilevered off edge','Panoramic city view','Intimate 4-top','Baseball stadium visible']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/ca4494624_generated_image.png',
+title:'The Terrace — Isometric Overview',
+desc:'The full terrace layout: the diagonal amphitheater in chartreuse-yellow and black, completely open to the sky, curved bar tucked underneath the stairs, the enclosed VIP box with its own canopy roof and lavender garden, and open dining terrace with city views beyond the glass railing.',
+feats:['Bar under stairs','Open-air amphitheater','VIP box canopy','White perforated facade','No glass pods']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/da27b0d63_generated_image.png',
+title:'Amphitheater — Looking Up The Stairs',
+desc:'Standing at the base of the amphitheater staircase, looking up at rows of chartreuse-yellow tiered seating cutting diagonally across the corner — completely open to the sky, no roof. The curved bar glows underneath. Communal harvest tables fill the terrace behind you.',
+feats:['Diagonal tiered seating','Curved bar glow','Open to sky','Communal tables','Espresso/tapas station']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/d19a9f704_generated_image.png',
+title:'On The Skywalk — The View',
+desc:'Standing on the 2m×15m glass skywalk, looking straight down through the glass floor at the city street below and out at Medellín\'s skyline at dusk — mountains, the lit-up baseball stadium, red-brick apartment blocks. Behind you, the amphitheater and curved bar glow chartreuse-yellow against the evening sky.',
+feats:['Glass skywalk 2m×15m','Glass floor + railing','Baseball stadium view','Evening skyline','Amphitheater glow behind']},
 ];
 let cur=0;
 const imgEl=document.getElementById('sceneImg'),titleEl=document.getElementById('sceneTitle'),descEl=document.getElementById('sceneDesc'),featsEl=document.getElementById('sceneFeats'),dotsEl=document.getElementById('dots');
