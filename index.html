@@ -30,7 +30,6 @@ svg{width:100%;height:auto;display:block}
 <div class="chips">
 <span class="chip">🪜 <b>Diagonal Amphitheater</b></span>
 <span class="chip">🍸 <b>Bar Under Stairs</b></span>
-<span class="chip">🫧 <b>Round Glass Pods</b></span>
 <span class="chip">🛰️ <b>Glass Skywalk 2×15m</b></span>
 <span class="chip">📺 <b>Giant Screen</b></span>
 <span class="chip">🍴 <b>Tapas Kitchen</b></span>
@@ -51,7 +50,7 @@ svg{width:100%;height:auto;display:block}
 <div class="legend" id="legend"></div>
 <div class="feat" id="pfeat"></div>
 </div>
-<div class="note">Fixed architecture: <b>bar under diagonal amphitheater stairs</b>, <b>round glass pods cantilevered off edge</b>, <b>curved bar</b>, <b>glass skywalk 2m×15m</b>, <b>giant screen</b>, <b>tapas kitchen</b>, <b>garden canopy</b>. Only the open-terrace table arrangements change between layouts.</div>
+<div class="note">Fixed architecture: <b>bar under diagonal amphitheater stairs</b>, <b>curved bar</b>, <b>glass skywalk 2m×15m</b>, <b>giant screen</b>, <b>tapas kitchen</b>. Canopy roof covers the enclosed VIP/kitchen room + bar walkway only — the <b>amphitheater is open-air under the sky</b> (matches real architect renders). Only the open-terrace table arrangements change between layouts.</div>
 </div>
 <script>
 let VIEW='iso';const SC=8,A=Math.PI/6;let allPts=[];
@@ -74,17 +73,8 @@ function CO(cx,cy,orb,n,off){off=off||0;let s='';for(let i=0;i<n;i++){let a=(i/n
 function CHAIRS_ROW(x,y,w,n,c){
  let s='';for(let i=0;i<n;i++){let t=(i+.5)/n;s+=CIL(x+t*w,y-1.4,.9,.78,c);s+=CIL(x+t*w,y+1.4,.9,.78,c)}return s}
 
-const Y='#f0c93a',YD='#a9822b',BLK='#161310',BLK2='#1e1a14',WD='#8a6a3a',WD2='#6a4a22',BAR_C='#e0b53a',PODC='#7ecbe0',GRN='#5a8a4a',LNG='#2a1e14',STN='#2a2218';
+const Y='#dde05a',YD='#a3a83f',BLK='#141210',BLK2='#1c1814',WD='#8a6a3a',WD2='#6a4a22',BAR_C='#dde05a',GRN='#5a8a4a',LNG='#2a1e14',STN='#2a2218';
 
-// GLASS POD (round cantilevered capsule)
-function POD(cx,cy,r,h){
- let s=SHD(cx,cy,r*1.2);
- s+='<line x1="'+P(cx,cy,h)[0]+'" y1="'+P(cx,cy,h)[1]+'" x2="'+P(cx,cy,.05)[0]+'" y2="'+P(cx,cy,.05)[1]+'" stroke="#2c4a52" stroke-width="2.5"/>';
- for(let i=0;i<8;i++){let an=(i/8)*Math.PI*2,x1=cx+Math.cos(an)*r,y1=cy+Math.sin(an)*r;let p1=P(x1,y1,0.1),p2=P(x1,y1,h*0.85);s+='<line x1="'+p1[0]+'" y1="'+p1[1]+'" x2="'+p2[0]+'" y2="'+p2[1]+'" stroke="'+PODC+'" stroke-width="1" opacity=".4"/>'}
- s+=CIR(cx,cy,h*0.85,r,PODC,24).replace('fill="'+SH(PODC,25)+'"','fill="'+PODC+'" opacity=".55"');
- s+=CIR(cx,cy,0.1,r,'#3a5560',24);
- return s;
-}
 
 function FIXED(){let s='';
  s+='<defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f0c93a" stop-opacity="0"/><stop offset=".5" stop-color="#f0c93a" stop-opacity=".3"/><stop offset="1" stop-color="#f0c93a" stop-opacity="0"/></linearGradient><radialGradient id="mg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f6e7b0"/><stop offset="55%" stop-color="#f0c93a"/><stop offset="100%" stop-color="#8a6d1f" stop-opacity="0"/></radialGradient></defs>';
@@ -97,12 +87,7 @@ function FIXED(){let s='';
  let w=[P(2,0,0),P(58,0,0),P(58,1.3,0),P(2,1.3,0)];s+='<polygon points="'+PP(w)+'" fill="url(#gl)" opacity=".5"/>';
  let c1=[];for(let i=0;i<=14;i++){c1.push(P(2+i*4,0,0))}for(let i=14;i>=0;i--){c1.push(P(2+i*4,0,1+Math.sin(i*1.1)*.9+Math.cos(i*.6)*.5))}s+='<polygon points="'+PP(c1)+'" fill="#0a1420" opacity=".55"/>';
 
- // ===== ROUND GLASS PODS (cantilevered off the view edge, y=0) =====
- const podXs=[5,13,21,29];
- for(const px of podXs){s+=POD(px,-1.5,3.2,3.6)}
- let pL=P(17,-7,4.8);s+='<text x="'+pL[0]+'" y="'+pL[1]+'" fill="#8ececc" font-size="9.5" text-anchor="middle" font-weight="500">GLASS PODS</text>';
-
- // ===== GLASS SKYWALK (2m x 15m overhang, from pods area southward) =====
+ // ===== GLASS SKYWALK (2m x 15m overhang, from the view edge southward) =====
  let sw=[P(5,0.5,0),P(20,0.5,0),P(20,2,2.8),P(5,2,2.8)];s+='<polygon points="'+PP(sw)+'" fill="#2c4a52" opacity=".25" stroke="#7ababa" stroke-width="1"/>';
  let swL=P(12.5,1.5,3);s+='<text x="'+swL[0]+'" y="'+swL[1]+'" fill="#7ababa" font-size="8" text-anchor="middle">SKYWALK 2m×15m</text>';
 
@@ -145,7 +130,7 @@ function FIXED(){let s='';
  // ===== TAPAS KITCHEN (top-left corner) =====
  s+=BOX(2,27,0,14,5,4.8,'#1c1410');let kL=P(9,29.5,5.1);s+='<text x="'+kL[0]+'" y="'+kL[1]+'" fill="#9a8a5c" font-size="9" text-anchor="middle" font-weight="500">TAPAS KITCHEN</text>';
 
- // ===== GIANT SCREEN (near y=0 wall, between pods and terrace) =====
+ // ===== GIANT SCREEN (near y=0 wall, near the view edge and terrace) =====
  let sc=[P(34,.3,3.5),P(54,.3,3.5),P(54,.3,8),P(34,.3,8)];s+='<polygon points="'+PP(sc)+'" fill="#1a1810" stroke="#3a3020" stroke-width="1" opacity=".92"/>';
  let scL=P(44,.2,5.8);s+='<text x="'+scL[0]+'" y="'+scL[1]+'" fill="'+Y+'" font-size="9" text-anchor="middle" opacity=".6">GIANT SCREEN</text>';
 
@@ -167,9 +152,9 @@ feat:"Straightforward <b>12 four-top grid</b> in the open terrace. Highest cover
 draw:function(){let s='';for(let r=0;r<3;r++)for(let c=0;c<4;c++){let x=5+c*8,y=4+r*7;s+=RT(x,y,4,3.5,2.6,WD)+RC(x,y,4,3.5,4)}return s}},
 
 {name:"2 · Booths + High-Tops",seats:40,tables:11,
-sub:"Banquette booths face the glass pods for skyline dining; round high-tops near the bar create a cocktail-lounge flow.",
+sub:"Banquette booths face the open skyline edge for city-view dining; round high-tops near the bar create a cocktail-lounge flow.",
 dim:"6 banquette booths (north) · 5 high-top rounds (near bar)",
-feat:"<b>North-facing booths</b> look straight out at the glass pods and city. <b>High-top rounds</b> near the curved bar create lounge energy before the amphitheater.",
+feat:"<b>North-facing booths</b> look straight out at the open skyline edge and city. <b>High-top rounds</b> near the curved bar create lounge energy before the amphitheater.",
 draw:function(){let s='';for(let i=0;i<6;i++){let x=34+i*4;s+=RT(x,3,3.5,3,2.6,WD)+RC(x,3,3.5,3,4)}for(let i=0;i<5;i++){s+=RD(5+i*6,14,1.7,2.8,BAR_C)+CO(5+i*6,14,2.4,2)}return s}},
 
 {name:"3 · Diagonal View-Facing",seats:44,tables:11,
@@ -179,9 +164,9 @@ feat:"Offset diagonal placement <b>mirrors the amphitheater geometry</b> — the
 draw:function(){let s='';let pts=[[5,4],[13,5.5],[21,4],[29,5.5],[5,14],[13,15],[21,14],[29,15],[36,4],[44,5],[36,14]];for(const[x,y] of pts){s+=RD(x,y,2,2.8,WD)+CO(x,y,2.9,4)}return s}},
 
 {name:"4 · Communal Near Bar",seats:46,tables:9,
-sub:"Large communal rounds anchor near the curved bar for group dining; intimate 2-tops line the pod-facing edge for couples.",
+sub:"Large communal rounds anchor near the curved bar for group dining; intimate 2-tops line the view edge for couples.",
 dim:"2 communal 8-tops (near bar) · 7 two-tops (north edge)",
-feat:"<b>2 large communal rounds</b> near the bar — natural spot for groups ordering bottle service. <b>2-tops along the pod-facing edge</b> for couples wanting the skyline.",
+feat:"<b>2 large communal rounds</b> near the bar — natural spot for groups ordering bottle service. <b>2-tops along the view edge</b> for couples wanting the skyline.",
 draw:function(){let s='';s+=RD(14,10,3.4,3,YD)+CO(14,10,4.6,8);s+=RD(14,20,3.4,3,YD)+CO(14,20,4.6,8);for(let i=0;i<7;i++){let x=34+i*3.5;s+=RD(x,4,1.3,2.5,WD)+CO(x,4,2,2)}return s}},
 
 {name:"5 · Couples + Groups",seats:38,tables:12,
@@ -210,7 +195,7 @@ draw:function(){let s='';s+=BOX(34,2,0,20,12,1.5,STN);s+=BOX(34,18,0,20,10,3.2,S
 ];
 
 const svg=document.getElementById('svg'),tabsEl=document.getElementById('tabs'),legEl=document.getElementById('legend');
-function legHTML(){return[['#f0c93a','Amphitheater seats'],['#161310','Tier steps'],['#e0b53a','Bar'],['#7ecbe0','Glass pods'],['#2c4a52','Skywalk'],['#8a6a3a','Dining table'],['#a9822b','Communal'],['#2a1e14','Lounge sofa'],['#1c1410','Kitchen']].map(([c,l])=>'<span><span class="sw" style="background:'+c+'"></span>'+l+'</span>').join('')}
+function legHTML(){return[['#dde05a','Amphitheater seats'],['#141210','Tier steps'],['#dde05a','Bar'],['#2c4a52','Skywalk'],['#8a6a3a','Dining table'],['#a3a83f','Communal'],['#2a1e14','Lounge sofa'],['#1c1410','Kitchen']].map(([c,l])=>'<span><span class="sw" style="background:'+c+'"></span>'+l+'</span>').join('')}
 let curIdx=0,tourOn=false,tourTimer=null;
 function render(i){let Ld=L[i];curIdx=i;allPts=[];let content=FIXED()+Ld.draw();
  let minX=1/0,maxX=-1/0,minY=1/0,maxY=-1/0;for(const[x,y]of allPts){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y}
