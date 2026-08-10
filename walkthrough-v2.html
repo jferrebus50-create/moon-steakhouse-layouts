@@ -42,10 +42,10 @@ body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;paddi
 </div>
 
 <div class="scene-box" id="walkthrough">
-<img class="scene-img" id="sceneImg" src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/e9d615ccf_generated_image.png" alt="Walking In">
+<img class="scene-img" id="sceneImg" src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/6eba951ab_generated_image.png" alt="At The Entrance">
 <div class="scene-info">
-<div class="scene-title" id="sceneTitle">1. Walking In — The Terrace</div>
-<div class="scene-desc" id="sceneDesc">You step off the elevator on the top floor. Before you, the staircase rises at a steep angle on a single flight, supported by a row of black steel columns. The crescent moon bar runs the FULL LENGTH directly underneath — centered in the void between the columns, not off to one side — glowing amber with backlit bottles at the tall end. Dining tables line the glass railing with city lights beyond.</div>
+<div class="scene-title" id="sceneTitle">1. At The Entrance — Straight Down The Room</div>
+<div class="scene-desc" id="sceneDesc">Standing right at the entrance doorway, looking straight ahead down the full length of the restaurant. Dining tables fill the main floor between you and the far wall. All the way at the back, the crescent moon bar glows amber, built directly under the monumental staircase which rises up behind it. Lounge seating lines the right wall, low sofas near the entrance on the left, city lights of Medellín visible through the open terrace edge beyond the bar.</div>
 <div class="scene-features" id="sceneFeats">
 <span class="feat-tag">Crescent moon bar</span><span class="feat-tag">Amphitheater stairs (right)</span><span class="feat-tag">City panorama</span><span class="feat-tag">Japanese maple</span><span class="feat-tag">Open sky above stairs</span>
 </div>
@@ -80,24 +80,28 @@ body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;paddi
 
 <script>
 const SCENES=[
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/6eba951ab_generated_image.png',
+title:'1. At The Entrance — Straight Down The Room',
+desc:'Standing right at the entrance doorway, looking straight ahead down the full length of the restaurant. Dining tables fill the main floor between you and the far wall. All the way at the back, the crescent moon bar glows amber, built directly under the monumental staircase which rises up behind it. Lounge seating lines the right wall, low sofas near the entrance on the left, city lights of Medellín visible through the open terrace edge beyond the bar.',
+feats:['Entrance sightline','Bar visible at far end','Under the stairs','Symmetrical room view','City skyline backdrop']},
 {img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/e9d615ccf_generated_image.png',
-title:'1. Walking In — The Terrace',
+title:'2. Walking In — The Terrace',
 desc:'You step off the elevator on the top floor. The staircase rises at a steep single flight, supported by a row of black steel columns matching the real construction. The crescent moon bar runs the FULL LENGTH directly underneath — centered in the void between the columns, not pushed to one side — glowing amber with backlit bottles at the tall end. Dining tables line the glass railing with city lights beyond.',
 feats:['Crescent bar — full length, centered','Steel column rhythm','City panorama','Japanese maple','Open sky above stairs']},
 {img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/1cbc3eaa2_generated_image.png',
-title:'2. At The Bar — Directly Underneath',
+title:'3. At The Bar — Directly Underneath',
 desc:'Standing at the crescent moon bar, positioned dead-center in the corridor formed by the steel support columns — occupying the FULL under-stair void, not tucked to one side. Backlit bottle shelving rises at the tall end, extended stool seating at the low end. String lights along the stair treads above, amber LED under the marble counter. Through the open sides between the columns: the terrace, then Medellín\'s skyline beyond the railing.',
 feats:['Bar centered under full stair span','Columns as structural rhythm','Backlit bottle wall','String lights on treads','Bartender at work']},
 {img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/75b2b2746_generated_image.png',
-title:'3. Dining Table — The View',
+title:'4. Dining Table — The View',
 desc:'Seated at a round table on the left side of the terrace. To your left, the glass railing and the glittering city of Medellín spread across the valley, the baseball stadium glowing in the distance. To your right, the amphitheater staircase rises with people sitting on yellow benches watching a giant screen showing the game. A Japanese maple tree with deep red leaves stands between you and the stairs. Candlelight, wine, steak.',
 feats:['City + stadium view','Giant screen','Japanese maple','Candlelight dining','Open-air terrace']},
 {img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/5508b7e17_generated_image.png',
-title:'4. From The Stairs — The Overview',
+title:'5. From The Stairs — The Overview',
 desc:'Sitting on the top tier of the amphitheater seating, you look down and out over the entire terrace. The crescent bar glows below, diners at their tables, waiters moving between them. Beyond the glass railing, Medellín glows golden in the valley between mountains at dusk. On the right behind you, the rooftop garden with lavender under the yellow canopy roof. A giant screen shows a live game.',
 feats:['Top tier view','Full terrace panorama','Rooftop garden behind','Giant screen','Golden hour city']},
 {img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/53442e2cd_generated_image.png',
-title:'5. VIP Rooftop Garden — The Deck',
+title:'6. VIP Rooftop Garden — The Deck',
 desc:'You have climbed the open-riser stairs and arrived at the rooftop garden on Floor 25. Lavender plants in planter boxes surround a small intimate seating nook with yellow lounge chairs. The chartreuse-yellow canopy roof covers this upper deck. Through the plants, you can see down over the entire terrace — the bar, the dining tables, the city of Medellín glowing in the valley at golden hour. A couple sits with champagne.',
 feats:['VIP observation deck','Rooftop garden','Lavender plants','Yellow canopy roof','Champagne seating']},
 ];
