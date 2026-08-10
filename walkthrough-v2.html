@@ -62,14 +62,14 @@ body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;paddi
 <div class="spec-item"><div class="spec-label">Bar Shape</div><div class="spec-val">Crescent Moon</div></div>
 <div class="spec-item"><div class="spec-label">Bar Location</div><div class="spec-val">Centered UNDER stairs (full span)</div></div>
 <div class="spec-item"><div class="spec-label">Stair Direction</div><div class="spec-val">Up from left → right</div></div>
-<div class="spec-item"><div class="spec-label">Stair Type</div><div class="spec-val">Open-riser amphitheater</div></div>
+<div class="spec-item"><div class="spec-label">Staircase</div><div class="spec-val">ONE single flight to observation deck</div></div>
 <div class="spec-item"><div class="spec-label">Stair Roof</div><div class="spec-val">Open-air (no roof)</div></div>
 <div class="spec-item"><div class="spec-label">Color Palette</div><div class="spec-val">Chartreuse-yellow + Black</div></div>
 <div class="spec-item"><div class="spec-label">Walk Path</div><div class="spec-val">Both sides of bar (to stairs)</div></div>
 <div class="spec-item"><div class="spec-label">Glass Pods</div><div class="spec-val">Removed (not built)</div></div>
 <div class="spec-item"><div class="spec-label">Flooring</div><div class="spec-val">Light stone tile</div></div>
 <div class="spec-item"><div class="spec-label">Facade</div><div class="spec-val">White perforated panels</div></div>
-<div class="spec-item"><div class="spec-label">VIP Deck</div><div class="spec-val">Rooftop garden, Floor 25</div></div>
+<div class="spec-item"><div class="spec-label">Observation Deck</div><div class="spec-val">Top of stairs — skyline photo spot</div></div>
 </div>
 </div>
 
@@ -83,22 +83,18 @@ const SCENES=[
 title:'1. At The Entrance',
 desc:'Standing at the entrance looking down the dining room. Leather club chairs, banquette seating, city views. At the far end the bar glows as a backlit moon feature wall.',
 feats:['Entrance sightline','Backlit moon bar wall','Leather club chairs','City skyline']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/b2655296f_generated_image.png',
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/b59eea7cb_generated_image.png',
 title:'2. The Bar — Directly Under The Stairs',
-desc:'The crescent moon bar sits dead-center in the void UNDER the staircase — not to the left, not to the right, directly underneath. The bar runs the full length of the stair. On both sides there is clear walkable floor space so guests walk AROUND the bar to reach the stairs. People shown walking past on both sides, one heading up the steps.',
-feats:['Bar UNDER stairs','Walkable path both sides','Crescent moon counter','Full stair span','Access to stairs']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/b50c81c8c_generated_image.png',
-title:'3. Overhead — Bar Under Stairs + Walk Paths',
-desc:'Isometric overhead showing the bar centered directly beneath the staircase. Clear walk paths on both sides of the bar so people can get around it to go up the stairs. Dining tables fill the rest of the terrace.',
-feats:['Bar centered under stairs','Walk paths both sides','Dining tables','Isometric overview']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/75b2b2746_generated_image.png',
-title:'4. Dining Table — The View',
-desc:'Seated at a round table. To your left, the glass railing and the glittering city of Medellin, the baseball stadium glowing in the distance. Candlelight, wine, steak.',
-feats:['City + stadium view','Candlelight dining','Open-air terrace']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/53442e2cd_generated_image.png',
-title:'5. VIP Rooftop Garden — The Deck',
-desc:'Up the stairs and onto the rooftop garden on Floor 25. Lavender plants, yellow lounge chairs, panoramic view down over the entire terrace and the city of Medellin at golden hour.',
-feats:['VIP observation deck','Rooftop garden','Lavender plants','Panoramic view']},
+desc:'The crescent moon bar sits dead-center in the void UNDER the single staircase. Not to the left, not to the right — directly underneath, running the full length. Walkable floor space on both sides so guests walk around the bar to reach the stairs. One person heading up the steps on the right.',
+feats:['Bar UNDER stairs','Walkable both sides','Crescent moon counter','Single staircase','Full stair span']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/668fa8156_generated_image.png',
+title:'3. Overhead — One Stair, Bar Under, Walk Paths',
+desc:'Isometric view showing the single staircase rising to the observation deck. The crescent bar is centered directly beneath it. Clear walk paths on both sides lead around the bar to the stairs. Up top, a small open-air platform where people take photos of the skyline. Dining tables fill the rest of the terrace.',
+feats:['One staircase','Bar centered under stairs','Walk paths both sides','Observation deck on top','Dining tables']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/1434e3818_generated_image.png',
+title:'4. Top Of The Stairs — Skyline View',
+desc:'Standing at the top of the single staircase on the observation deck, looking out at Medellin at night. People at the glass railing taking photos with their phones. Below and behind you, the stairs descend back to the terrace and the crescent bar glows amber underneath them. Open-air, no roof, just the sky and the city lights.',
+feats:['Observation deck','Skyline photo spot','Open-air no roof','Bar visible below','Baseball stadium view']},
 ];
 let cur=0;
 const imgEl=document.getElementById('sceneImg'),titleEl=document.getElementById('sceneTitle'),descEl=document.getElementById('sceneDesc'),featsEl=document.getElementById('sceneFeats'),dotsEl=document.getElementById('dots');
