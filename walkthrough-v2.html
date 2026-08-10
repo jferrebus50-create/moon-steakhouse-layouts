@@ -44,11 +44,9 @@ body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;paddi
 <div class="scene-box" id="walkthrough">
 <img class="scene-img" id="sceneImg" src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/f1bad6982_generated_image.png" alt="At The Entrance">
 <div class="scene-info">
-<div class="scene-title" id="sceneTitle">1. At The Entrance — Straight Down The Room</div>
-<div class="scene-desc" id="sceneDesc">Standing right at the entrance, looking straight down the dining room. Leather club chairs on the left, banquette dining with city views on the right, travertine floor underfoot. At the far end, the bar reads as an elegant backlit feature wall — dark onyx paneling with a glowing amber crescent-moon cutout inlaid in the stone. No staircase in this shot; the amphitheater stairs sit elsewhere in the space.</div>
-<div class="scene-features" id="sceneFeats">
-<span class="feat-tag">Crescent moon bar</span><span class="feat-tag">Amphitheater stairs (right)</span><span class="feat-tag">City panorama</span><span class="feat-tag">Japanese maple</span><span class="feat-tag">Open sky above stairs</span>
-</div>
+<div class="scene-title" id="sceneTitle">1. At The Entrance</div>
+<div class="scene-desc" id="sceneDesc">Standing at the entrance looking down the dining room. Leather club chairs, banquette seating, city views. At the far end the bar glows as a backlit moon feature wall.</div>
+<div class="scene-features" id="sceneFeats"><span class="feat-tag">Entrance sightline</span><span class="feat-tag">Backlit moon bar wall</span><span class="feat-tag">Leather club chairs</span><span class="feat-tag">City skyline</span></div>
 </div>
 </div>
 
@@ -62,11 +60,12 @@ body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;paddi
 <h3>Design Specifications</h3>
 <div class="spec-grid">
 <div class="spec-item"><div class="spec-label">Bar Shape</div><div class="spec-val">Crescent Moon</div></div>
-<div class="spec-item"><div class="spec-label">Bar Location</div><div class="spec-val">Centered, full length under stairs</div></div>
+<div class="spec-item"><div class="spec-label">Bar Location</div><div class="spec-val">Centered UNDER stairs (full span)</div></div>
 <div class="spec-item"><div class="spec-label">Stair Direction</div><div class="spec-val">Up from left → right</div></div>
 <div class="spec-item"><div class="spec-label">Stair Type</div><div class="spec-val">Open-riser amphitheater</div></div>
 <div class="spec-item"><div class="spec-label">Stair Roof</div><div class="spec-val">Open-air (no roof)</div></div>
 <div class="spec-item"><div class="spec-label">Color Palette</div><div class="spec-val">Chartreuse-yellow + Black</div></div>
+<div class="spec-item"><div class="spec-label">Walk Path</div><div class="spec-val">Both sides of bar (to stairs)</div></div>
 <div class="spec-item"><div class="spec-label">Glass Pods</div><div class="spec-val">Removed (not built)</div></div>
 <div class="spec-item"><div class="spec-label">Flooring</div><div class="spec-val">Light stone tile</div></div>
 <div class="spec-item"><div class="spec-label">Facade</div><div class="spec-val">White perforated panels</div></div>
@@ -81,29 +80,25 @@ body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;paddi
 <script>
 const SCENES=[
 {img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/f1bad6982_generated_image.png',
-title:'1. At The Entrance — Straight Down The Room',
-desc:'Standing right at the entrance, looking straight down the dining room. Leather club chairs on the left, banquette dining with city views on the right, travertine floor underfoot. At the far end, the bar reads as an elegant backlit feature wall — dark onyx paneling with a glowing amber crescent-moon cutout inlaid in the stone. No staircase in this shot; the amphitheater stairs sit elsewhere in the space.',
-feats:['Entrance sightline','Backlit moon feature wall','No staircase in view','Leather club chairs','City skyline backdrop']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/e9d615ccf_generated_image.png',
-title:'2. Walking In — The Terrace',
-desc:'You step off the elevator on the top floor. The staircase rises at a steep single flight, supported by a row of black steel columns matching the real construction. The crescent moon bar runs the FULL LENGTH directly underneath — centered in the void between the columns, not pushed to one side — glowing amber with backlit bottles at the tall end. Dining tables line the glass railing with city lights beyond.',
-feats:['Crescent bar — full length, centered','Steel column rhythm','City panorama','Japanese maple','Open sky above stairs']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/1cbc3eaa2_generated_image.png',
-title:'3. At The Bar — Directly Underneath',
-desc:'Standing at the crescent moon bar, positioned dead-center in the corridor formed by the steel support columns — occupying the FULL under-stair void, not tucked to one side. Backlit bottle shelving rises at the tall end, extended stool seating at the low end. String lights along the stair treads above, amber LED under the marble counter. Through the open sides between the columns: the terrace, then Medellín\'s skyline beyond the railing.',
-feats:['Bar centered under full stair span','Columns as structural rhythm','Backlit bottle wall','String lights on treads','Bartender at work']},
+title:'1. At The Entrance',
+desc:'Standing at the entrance looking down the dining room. Leather club chairs, banquette seating, city views. At the far end the bar glows as a backlit moon feature wall.',
+feats:['Entrance sightline','Backlit moon bar wall','Leather club chairs','City skyline']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/b2655296f_generated_image.png',
+title:'2. The Bar — Directly Under The Stairs',
+desc:'The crescent moon bar sits dead-center in the void UNDER the staircase — not to the left, not to the right, directly underneath. The bar runs the full length of the stair. On both sides there is clear walkable floor space so guests walk AROUND the bar to reach the stairs. People shown walking past on both sides, one heading up the steps.',
+feats:['Bar UNDER stairs','Walkable path both sides','Crescent moon counter','Full stair span','Access to stairs']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/b50c81c8c_generated_image.png',
+title:'3. Overhead — Bar Under Stairs + Walk Paths',
+desc:'Isometric overhead showing the bar centered directly beneath the staircase. Clear walk paths on both sides of the bar so people can get around it to go up the stairs. Dining tables fill the rest of the terrace.',
+feats:['Bar centered under stairs','Walk paths both sides','Dining tables','Isometric overview']},
 {img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/75b2b2746_generated_image.png',
 title:'4. Dining Table — The View',
-desc:'Seated at a round table on the left side of the terrace. To your left, the glass railing and the glittering city of Medellín spread across the valley, the baseball stadium glowing in the distance. To your right, the amphitheater staircase rises with people sitting on yellow benches watching a giant screen showing the game. A Japanese maple tree with deep red leaves stands between you and the stairs. Candlelight, wine, steak.',
-feats:['City + stadium view','Giant screen','Japanese maple','Candlelight dining','Open-air terrace']},
-{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/5508b7e17_generated_image.png',
-title:'5. From The Stairs — The Overview',
-desc:'Sitting on the top tier of the amphitheater seating, you look down and out over the entire terrace. The crescent bar glows below, diners at their tables, waiters moving between them. Beyond the glass railing, Medellín glows golden in the valley between mountains at dusk. On the right behind you, the rooftop garden with lavender under the yellow canopy roof. A giant screen shows a live game.',
-feats:['Top tier view','Full terrace panorama','Rooftop garden behind','Giant screen','Golden hour city']},
+desc:'Seated at a round table. To your left, the glass railing and the glittering city of Medellin, the baseball stadium glowing in the distance. Candlelight, wine, steak.',
+feats:['City + stadium view','Candlelight dining','Open-air terrace']},
 {img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/53442e2cd_generated_image.png',
-title:'6. VIP Rooftop Garden — The Deck',
-desc:'You have climbed the open-riser stairs and arrived at the rooftop garden on Floor 25. Lavender plants in planter boxes surround a small intimate seating nook with yellow lounge chairs. The chartreuse-yellow canopy roof covers this upper deck. Through the plants, you can see down over the entire terrace — the bar, the dining tables, the city of Medellín glowing in the valley at golden hour. A couple sits with champagne.',
-feats:['VIP observation deck','Rooftop garden','Lavender plants','Yellow canopy roof','Champagne seating']},
+title:'5. VIP Rooftop Garden — The Deck',
+desc:'Up the stairs and onto the rooftop garden on Floor 25. Lavender plants, yellow lounge chairs, panoramic view down over the entire terrace and the city of Medellin at golden hour.',
+feats:['VIP observation deck','Rooftop garden','Lavender plants','Panoramic view']},
 ];
 let cur=0;
 const imgEl=document.getElementById('sceneImg'),titleEl=document.getElementById('sceneTitle'),descEl=document.getElementById('sceneDesc'),featsEl=document.getElementById('sceneFeats'),dotsEl=document.getElementById('dots');
