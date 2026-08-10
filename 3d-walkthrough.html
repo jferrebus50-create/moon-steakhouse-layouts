@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moon Steakhouse — 3D Interactive Walkthrough</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0806;overflow:hidden;font-family:Poppins,sans-serif}
+#canvas{display:block;width:100vw;height:100vh}
+#ui{position:fixed;top:0;left:0;right:0;z-index:10;pointer-events:none;padding:16px 20px;background:linear-gradient(180deg,rgba(10,8,6,.85),transparent)}
+#title{text-align:center}
+#title h1{font-family:Cormorant Garamond,serif;font-size:24px;letter-spacing:3px;background:linear-gradient(180deg,#f6e7b0,#f0c93a,#a9822b);-webkit-background-clip:text;background-clip:text;color:transparent}
+#title p{color:#8f7c50;font-size:11px;margin-top:2px}
+#controls{position:fixed;bottom:0;left:0;right:0;z-index:10;padding:16px 20px;background:linear-gradient(0deg,rgba(10,8,6,.9),transparent);display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none}
+#layout-tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;pointer-events:auto}
+.ltab{background:rgba(20,16,10,.9);border:1px solid #3a2f18;color:#8f7c50;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:500;transition:.2s;font-family:inherit}
+.ltab:hover{border-color:#f0c93a;color:#e9d9ab}
+.ltab.active{background:linear-gradient(135deg,rgba(240,201,58,.15),rgba(169,130,43,.05));border-color:#f0c93a;color:#f0c93a}
+#info{color:#6c5e3e;font-size:10px;text-align:center;pointer-events:none}
+#info span{color:#8f7c50}
+#help{position:fixed;top:50%;right:16px;transform:translateY(-50%);z-index:10;pointer-events:none;color:#4a4030;font-size:10px;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:2px}
+#loading{position:fixed;inset:0;background:#0a0806;display:flex;align-items:center;justify-content:center;z-index:100;color:#8f7c50;font-size:14px;letter-spacing:2px}
+.moon{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f6e7b0,#f0c93a 50%,#8a6d1f);margin:0 auto 12px;box-shadow:0 0 30px 6px rgba(240,201,58,.35);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 30px 6px rgba(240,201,58,.35)}50%{box-shadow:0 0 50px 10px rgba(240,201,58,.5)}}
+</style>
+</head>
+<body>
+
+<div id="loading"><div style="text-align:center"><div class="moon"></div>Loading 3D scene…</div></div>
+
+<div id="ui"><div id="title"><h1>MOON STEAKHOUSE</h1><p>3D Interactive · Floor 24 · Medellín</p></div></div>
+<div id="help">DRAG TO ORBIT · SCROLL TO ZOOM · RIGHT-DRAG TO PAN</div>
+
+<div id="controls">
+<div id="layout-tabs">
+<button class="ltab active" onclick="switchLayout(0)">Entrance</button>
+<button class="ltab" onclick="switchLayout(1)">Constellation</button>
+<button class="ltab" onclick="switchLayout(2)">Crescent Flow</button>
+<button class="ltab" onclick="switchLayout(3)">The Eclipse</button>
+<button class="ltab" onclick="switchLayout(4)">Galaxy Lounge</button>
+<button class="ltab" onclick="switchLayout(5)">Lunar Phases</button>
+</div>
+<div id="info"><span id="info-text">Entrance view — looking in from the elevator</span></div>
+</div>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// Scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0a0806);
+scene.fog = new THREE.Fog(0x0a0806, 40, 120);
+
+// Camera
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 200);
+camera.position.set(25, 18, 28);
+
+// Renderer
+const renderer = new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance'});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+document.body.appendChild(renderer.domElement);
+renderer.domElement.id = 'canvas';
+
+// Controls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 8;
+controls.maxDistance = 60;
+controls.maxPolarAngle = Math.PI/2 - 0.05;
+controls.target.set(0, 2, 0);
+
+// Lights
+const ambient = new THREE.AmbientLight(0x2a2520, 0.6);
+scene.add(ambient);
+
+const moonLight = new THREE.DirectionalLight(0xf0c93a, 0.8);
+moonLight.position.set(10, 30, 10);
+moonLight.castShadow = true;
+moonLight.shadow.mapSize.set(2048, 2048);
+moonLight.shadow.camera.left = -30;
+moonLight.shadow.camera.right = 30;
+moonLight.shadow.camera.top = 30;
+moonLight.shadow.camera.bottom = -30;
+moonLight.shadow.camera.near = 0.5;
+moonLight.shadow.camera.far = 60;
+scene.add(moonLight);
+
+const fillLight = new THREE.DirectionalLight(0x4060a0, 0.2);
+fillLight.position.set(-10, 15, -10);
+scene.add(fillLight);
+
+// Bar glow point lights
+function addGlow(x, z, color, intensity, dist) {
+  const l = new THREE.PointLight(color, intensity, dist);
+  l.position.set(x, 1.5, z);
+  scene.add(l);
+  return l;
+}
+
+// City lights (distant)
+for(let i=0; i<80; i++){
+  const cl = new THREE.PointLight(0xf0c93a, 0.15, 3);
+  cl.position.set(
+    (Math.random()-0.5)*80 + (Math.random()<0.5?-40:40),
+    Math.random()*8+1,
+    -25 - Math.random()*30
+  );
+  scene.add(cl);
+}
+
+// Distant city buildings
+const cityGroup = new THREE.Group();
+for(let i=0; i<40; i++){
+  const w = 2+Math.random()*3;
+  const h = 4+Math.random()*15;
+  const d = 2+Math.random()*3;
+  const geom = new THREE.BoxGeometry(w, h, d);
+  const mat = new THREE.MeshStandardMaterial({color: 0x1a1a22, roughness:0.9, metalness:0.1});
+  const bldg = new THREE.Mesh(geom, mat);
+  const angle = (i/40)*Math.PI*1.4 + 0.3;
+  const dist = 30+Math.random()*20;
+  bldg.position.set(Math.cos(angle)*dist, h/2, -15-Math.sin(angle)*dist-5);
+  cityGroup.add(bldg);
+  // Tiny windows
+  const winMat = new THREE.MeshBasicMaterial({color: 0xf0c93a, transparent:true, opacity:0.3+Math.random()*0.3});
+  for(let j=0; j<Math.floor(h/1.5); j++){
+    for(let k=0; k<Math.floor(w/1); k++){
+      if(Math.random()<0.4){
+        const win = new THREE.Mesh(new THREE.PlaneGeometry(0.3,0.3), winMat);
+        win.position.set(bldg.position.x + w/2+0.01, j*1.5+0.5, bldg.position.z + (k-w/2+0.5));
+        win.rotation.y = Math.PI/2;
+        cityGroup.add(win);
+      }
+    }
+  }
+}
+scene.add(cityGroup);
+
+// Mountains (dark silhouettes)
+const mtGeom = new THREE.PlaneGeometry(120, 25, 50, 10);
+const mtMat = new THREE.MeshStandardMaterial({color: 0x12141a, roughness:1, side:THREE.DoubleSide});
+const mountainVertices = mtGeom.attributes.position;
+for(let i=0; i<mountainVertices.count; i++){
+  const x = mountainVertices.getX(i);
+  const z = mountainVertices.getZ ? mountainVertices.getZ(i) : 0;
+  let h = 8 + Math.sin(x*0.15)*4 + Math.sin(x*0.05)*6 + Math.random()*2;
+  mountainVertices.setY(i, h);
+}
+mtGeom.computeVertexNormals();
+const mountains = new THREE.Mesh(mtGeom, mtMat);
+mountains.position.set(0, 0, -55);
+scene.add(mountains);
+
+// === FLOOR ===
+const floorGeom = new THREE.PlaneGeometry(28, 22);
+const floorMat = new THREE.MeshStandardMaterial({color: 0x2a2418, roughness:0.85, metalness:0.1});
+const floor = new THREE.Mesh(floorGeom, floorMat);
+floor.rotation.x = -Math.PI/2;
+floor.receiveShadow = true;
+scene.add(floor);
+
+// Floor edge glow
+const edgeGeom = new THREE.RingGeometry(13, 14, 64);
+const edgeMat = new THREE.MeshBasicMaterial({color: 0xf0c93a, transparent:true, opacity:0.15, side:THREE.DoubleSide});
+const edge = new THREE.Mesh(edgeGeom, edgeMat);
+edge.rotation.x = -Math.PI/2;
+edge.position.y = 0.01;
+scene.add(edge);
+
+// === COLUMNS (steel I-beams) ===
+const colMat = new THREE.MeshStandardMaterial({color: 0x1a1a1a, roughness:0.6, metalness:0.4});
+const colPositions = [[-13,11],[13,11],[-13,-11],[13,-11],[0,11],[0,-11]];
+colPositions.forEach(([x,z])=>{
+  const col = new THREE.Mesh(new THREE.BoxGeometry(0.6, 6, 0.6), colMat);
+  col.position.set(x, 3, z);
+  col.castShadow = true;
+  scene.add(col);
+  // top cross-beam
+  const beam = new THREE.Mesh(new THREE.BoxGeometry(1, 0.3, 0.3), colMat);
+  beam.position.set(x, 5.9, z);
+  scene.add(beam);
+});
+
+// Ceiling beams
+const beamMat = new THREE.MeshStandardMaterial({color: 0x14100a, roughness:0.7, metalness:0.2});
+for(let i=-13; i<=13; i+=6){
+  const beam = new THREE.Mesh(new THREE.BoxGeometry(26, 0.25, 0.3), beamMat);
+  beam.position.set(0, 5.8, i);
+  scene.add(beam);
+}
+
+// === AMPHITHEATER (tiered seating) ===
+const amphiGroup = new THREE.Group();
+amphiGroup.name = 'amphitheater';
+
+const tierMat = new THREE.MeshStandardMaterial({color: 0x222222, roughness:0.8, metalness:0.1});
+const tierTopMat = new THREE.MeshStandardMaterial({color: 0x333333, roughness:0.7, metalness:0.15});
+const yellowMat = new THREE.MeshStandardMaterial({color: 0xd4ed2c, roughness:0.5, metalness:0.2, emissive: 0x556b11, emissiveIntensity: 0.15});
+
+const tierCount = 5;
+const tierDepth = 1.6;
+const tierHeight = 0.45;
+const amphiWidth = 14;
+const startX = -amphiWidth/2 + 7; // offset to right side
+const startZ = -11 + 2;
+
+// Create tiers diagonally
+for(let t=0; t<tierCount; t++){
+  const w = amphiWidth - t*1.2;
+  const z = startZ + t * tierDepth;
+  
+  // Step structure (trapezoid-ish)
+  const stepGeom = new THREE.BoxGeometry(w, tierHeight, tierDepth);
+  const step = new THREE.Mesh(stepGeom, tierMat);
+  step.position.set(startX + t*0.6, tierHeight/2 + t*tierHeight, z + tierDepth/2);
+  step.castShadow = true;
+  step.receiveShadow = true;
+  amphiGroup.add(step);
+  
+  // Top surface (lighter)
+  const topGeom = new THREE.BoxGeometry(w, 0.05, tierDepth);
+  const top = new THREE.Mesh(topGeom, tierTopMat);
+  top.position.set(startX + t*0.6, tierHeight + t*tierHeight + 0.02, z + tierDepth/2);
+  top.receiveShadow = true;
+  amphiGroup.add(top);
+  
+  // Yellow bench seats (cushions on each tier)
+  const benchCount = Math.floor(w/2.5);
+  for(let b=0; b<benchCount; b++){
+    const bx = startX + t*0.6 - w/2 + 1.2 + b*2.5;
+    const benchGeom = new THREE.BoxGeometry(2, 0.12, 0.8);
+    const bench = new THREE.Mesh(benchGeom, yellowMat);
+    bench.position.set(bx, tierHeight + t*tierHeight + 0.08, z + tierDepth*0.65);
+    bench.castShadow = true;
+    amphiGroup.add(bench);
+  }
+  
+  // People sitting on the tiers
+  for(let p=0; p<benchCount; p++){
+    if(Math.random() < 0.75){
+      const px = startX + t*0.6 - w/2 + 1.2 + p*2.5;
+      const person = createPerson();
+      person.position.set(px, tierHeight + t*tierHeight + 0.5, z + tierDepth*0.65);
+      person.rotation.y = Math.PI + (Math.random()-0.5)*0.4;
+      amphiGroup.add(person);
+    }
+  }
+}
+
+// Walkway between tiers (central path up)
+const walkGeom = new THREE.BoxGeometry(1.5, 0.03, tierCount * tierDepth);
+const walkMat = new THREE.MeshStandardMaterial({color: 0x3a2f18, roughness:0.6, metalness:0.3});
+const walkway = new THREE.Mesh(walkGeom, walkMat);
+walkway.position.set(startX + tierCount*0.6, 0.02, startZ + tierCount*tierDepth/2);
+amphiGroup.add(walkway);
+
+scene.add(amphiGroup);
+
+// === BAR (crescent moon shape) ===
+const barGroup = new THREE.Group();
+barGroup.name = 'bar';
+
+// Crescent shape using two arcs
+function createCrescentBar(){
+  const barBaseMat = new THREE.MeshStandardMaterial({color: 0x1a1206, roughness:0.3, metalness:0.5});
+  const barTopMat = new THREE.MeshStandardMaterial({color: 0x2a2010, roughness:0.2, metalness:0.6, emissive: 0x1a1200, emissiveIntensity: 0.1});
+  
+  const segments = 20;
+  const barWidth = 10;
+  const barDepth = 1.2;
+  const barHeight = 1.1;
+  const curveAmount = 2.5;
+  
+  // Build bar counter as a curved wall
+  for(let i=0; i<segments; i++){
+    const t = i/segments;
+    const angle = t * Math.PI * 0.7;
+    const x = Math.cos(angle - Math.PI*0.35) * (barWidth/2);
+    const z = -curveAmount + Math.sin(angle - Math.PI*0.35) * curveAmount;
+    
+    // Front panel
+    const panel = new THREE.Mesh(
+      new THREE.BoxGeometry(barWidth/segments + 0.05, barHeight, 0.15),
+      barBaseMat
+    );
+    panel.position.set(x, barHeight/2, z);
+    panel.lookAt(x, barHeight/2, z + 1);
+    panel.castShadow = true;
+    barGroup.add(panel);
+    
+    // Top surface
+    const top = new THREE.Mesh(
+      new THREE.BoxGeometry(barWidth/segments + 0.05, 0.05, barDepth),
+      barTopMat
+    );
+    top.position.set(x, barHeight + 0.025, z);
+    top.lookAt(x, barHeight + 0.025, z + 1);
+    top.rotation.x += Math.PI/2;
+    barGroup.add(top);
+    
+    // LED strip under front edge
+    if(i % 2 === 0){
+      const led = new THREE.Mesh(
+        new THREE.BoxGeometry(barWidth/segments + 0.05, 0.04, 0.02),
+        new THREE.MeshBasicMaterial({color: 0xf0c93a})
+      );
+      led.position.set(x, 0.08, z - 0.08);
+      led.lookAt(x, 0.08, z - 1);
+      barGroup.add(led);
+    }
+  }
+  
+  // Back bar shelving
+  for(let i=0; i<segments; i+=2){
+    const t = i/segments;
+    const angle = t * Math.PI * 0.7;
+    const x = Math.cos(angle - Math.PI*0.35) * (barWidth/2);
+    const z = -curveAmount + Math.sin(angle - Math.PI*0.35) * curveAmount - 0.6;
+    
+    // Shelf
+    const shelf = new THREE.Mesh(
+      new THREE.BoxGeometry(0.6, 0.04, 0.3),
+      new THREE.MeshStandardMaterial({color: 0x1a1206, roughness:0.4, metalness:0.3})
+    );
+    shelf.position.set(x, 1.3, z);
+    barGroup.add(shelf);
+    
+    // Bottles
+    for(let b=0; b<3; b++){
+      const bottle = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.04, 0.04, 0.2),
+        new THREE.MeshStandardMaterial({color: 0xd4ed2c, roughness:0.2, metalness:0.6, emissive: 0x556b11, emissiveIntensity: 0.2})
+      );
+      bottle.position.set(x + (b-1)*0.08, 1.42, z);
+      barGroup.add(bottle);
+    }
+  }
+  
+  // Bar glow
+  addGlow(0, -1, 0xf0c93a, 0.8, 8);
+  addGlow(-3, -1, 0xf0c93a, 0.5, 6);
+  addGlow(3, -1, 0xf0c93a, 0.5, 6);
+}
+
+createCrescentBar();
+barGroup.position.set(2, 0, -2);
+scene.add(barGroup);
+
+// === GIANT SCREEN ===
+const screenGeom = new THREE.PlaneGeometry(8, 3);
+const screenMat = new THREE.MeshBasicMaterial({color: 0x0a0a14, side:THREE.DoubleSide});
+const screen = new THREE.Mesh(screenGeom, screenMat);
+screen.position.set(0, 3.5, -10.5);
+scene.add(screen);
+
+// Screen frame
+const frameGeom = new THREE.BoxGeometry(8.3, 3.3, 0.1);
+const frameMat = new THREE.MeshStandardMaterial({color: 0x1a1206, roughness:0.4, metalness:0.5});
+const screenFrame = new THREE.Mesh(frameGeom, frameMat);
+screenFrame.position.set(0, 3.5, -10.55);
+scene.add(screenFrame);
+
+// Screen glow
+const screenLight = new THREE.PointLight(0x4080ff, 0.3, 15);
+screenLight.position.set(0, 3.5, -9);
+scene.add(screenLight);
+
+// === KITCHEN ===
+const kitchenGeom = new THREE.BoxGeometry(5, 2.5, 3);
+const kitchenMat = new THREE.MeshStandardMaterial({color: 0x5a4a2a, roughness:0.7, metalness:0.2});
+const kitchen = new THREE.Mesh(kitchenGeom, kitchenMat);
+kitchen.position.set(-10, 1.25, 8);
+kitchen.castShadow = true;
+scene.add(kitchen);
+
+// Kitchen glow
+const kLight = new THREE.PointLight(0xf0c93a, 0.4, 8);
+kLight.position.set(-10, 2, 8);
+scene.add(kLight);
+
+// === ENTRANCE ===
+const entGeom = new THREE.BoxGeometry(3, 2.2, 0.3);
+const entMat = new THREE.MeshStandardMaterial({color: 0x2a2418, roughness:0.5, metalness:0.3});
+const entrance = new THREE.Mesh(entGeom, entMat);
+entrance.position.set(0, 1.1, 11);
+scene.add(entrance);
+
+// Entrance glow
+const eLight = new THREE.PointLight(0xf0c93a, 0.3, 5);
+eLight.position.set(0, 1.5, 10.5);
+scene.add(eLight);
+
+// === VIP STAIRS UP (sign) ===
+const vipGeom = new THREE.BoxGeometry(2, 0.5, 0.3);
+const vipMat = new THREE.MeshStandardMaterial({color: 0x1a1206, roughness:0.3, metalness:0.5, emissive: 0xf0c93a, emissiveIntensity: 0.15});
+const vipSign = new THREE.Mesh(vipGeom, vipMat);
+vipSign.position.set(8, 4.5, -9);
+scene.add(vipSign);
+
+// === HELPER: Create a person figure ===
+function createPerson(seated){
+  const p = new THREE.Group();
+  const skinColors = [0xc99b83, 0x8a5a3b, 0xd4a373, 0xb07d56, 0xe8b87d];
+  const shirtColors = [0x1a1a2a, 0x2a1a1a, 0x1a2a1a, 0x2a2a2a, 0x1a1a3a, 0x3a2a1a];
+  const skin = skinColors[Math.floor(Math.random()*skinColors.length)];
+  const shirt = shirtColors[Math.floor(Math.random()*shirtColors.length)];
+  
+  if(seated){
+    // Seated person (torso leaning back, legs forward)
+    const torso = new THREE.Mesh(
+      new THREE.CapsuleGeometry(0.18, 0.35, 4, 8),
+      new THREE.MeshStandardMaterial({color: shirt, roughness:0.8})
+    );
+    torso.position.set(0, 0.25, 0);
+    torso.rotation.x = -0.15;
+    p.add(torso);
+    
+    const head = new THREE.Mesh(
+      new THREE.SphereGeometry(0.13, 12, 10),
+      new THREE.MeshStandardMaterial({color: skin, roughness:0.7})
+    );
+    head.position.set(0, 0.6, 0.05);
+    p.add(head);
+    
+    const legs = new THREE.Mesh(
+      new THREE.CapsuleGeometry(0.12, 0.3, 4, 8),
+      new THREE.MeshStandardMaterial({color: 0x1a1a1a, roughness:0.9})
+    );
+    legs.position.set(0, 0.08, 0.25);
+    legs.rotation.x = -1.2;
+    p.add(legs);
+  } else {
+    // Standing person
+    const torso = new THREE.Mesh(
+      new THREE.CapsuleGeometry(0.18, 0.5, 4, 8),
+      new THREE.MeshStandardMaterial({color: shirt, roughness:0.8})
+    );
+    torso.position.set(0, 0.55, 0);
+    p.add(torso);
+    
+    const head = new THREE.Mesh(
+      new THREE.SphereGeometry(0.13, 12, 10),
+      new THREE.MeshStandardMaterial({color: skin, roughness:0.7})
+    );
+    head.position.set(0, 0.95, 0);
+    p.add(head);
+    
+    const legs = new THREE.Mesh(
+      new THREE.CapsuleGeometry(0.12, 0.4, 4, 8),
+      new THREE.MeshStandardMaterial({color: 0x1a1a1a, roughness:0.9})
+    );
+    legs.position.set(0, 0.2, 0);
+    p.add(legs);
+  }
+  
+  p.scale.set(0.9, 0.9, 0.9);
+  p.traverse(c => { if(c.isMesh) c.castShadow = true; });
+  return p;
+}
+
+// === TABLES ===
+function createTable(r){
+  const t = new THREE.Group();
+  const topGeom = new THREE.CylinderGeometry(r, r, 0.05, 24);
+  const topMat = new THREE.MeshStandardMaterial({color: 0x2a2418, roughness:0.3, metalness:0.4});
+  const top = new THREE.Mesh(topGeom, topMat);
+  top.position.y = 0.75;
+  top.castShadow = true;
+  top.receiveShadow = true;
+  t.add(top);
+  
+  const legGeom = new THREE.CylinderGeometry(0.04, 0.06, 0.75, 6);
+  const leg = new THREE.Mesh(legGeom, new THREE.MeshStandardMaterial({color: 0x1a1a1a, roughness:0.5, metalness:0.5}));
+  leg.position.y = 0.375;
+  t.add(leg);
+  
+  // Glow ring under table
+  const glow = new THREE.Mesh(
+    new THREE.RingGeometry(r*0.7, r*0.9, 24),
+    new THREE.MeshBasicMaterial({color: 0xf0c93a, transparent:true, opacity:0.1, side:THREE.DoubleSide})
+  );
+  glow.rotation.x = -Math.PI/2;
+  glow.position.y = 0.02;
+  t.add(glow);
+  
+  return t;
+}
+
+// === STANDING PEOPLE ===
+function addStandingPerson(x, z, rotY){
+  const p = createPerson(false);
+  p.position.set(x, 0, z);
+  p.rotation.y = rotY || (Math.random()-0.5)*Math.PI;
+  scene.add(p);
+  return p;
+}
+
+// === CHAIRS around tables ===
+function addChairs(table, count){
+  const r = table.userData.r || 0.5;
+  for(let i=0; i<count; i++){
+    const angle = (i/count)*Math.PI*2;
+    const chair = new THREE.Mesh(
+      new THREE.BoxGeometry(0.35, 0.45, 0.35),
+      new THREE.MeshStandardMaterial({color: 0x1a1a1a, roughness:0.6, metalness:0.3})
+    );
+    chair.position.set(Math.cos(angle)*r*1.8, 0.225, Math.sin(angle)*r*1.8);
+    chair.castShadow = true;
+    table.add(chair);
+    
+    // Person sitting at table
+    if(Math.random() < 0.6){
+      const person = createPerson(true);
+      person.position.set(Math.cos(angle)*r*1.8, 0, Math.sin(angle)*r*1.8);
+      person.rotation.y = angle + Math.PI;
+      table.add(person);
+    }
+  }
+}
+
+// === LAYOUTS ===
+let currentTables = [];
+let currentPeople = [];
+
+function clearTables(){
+  currentTables.forEach(t => scene.remove(t));
+  currentTables = [];
+  currentPeople.forEach(p => scene.remove(p));
+  currentPeople = [];
+}
+
+function addTableWithChairs(x, z, r, chairCount){
+  const t = createTable(r);
+  t.position.set(x, 0, z);
+  t.userData.r = r;
+  addChairs(t, chairCount);
+  scene.add(t);
+  currentTables.push(t);
+  return t;
+}
+
+const layoutInfo = [
+  "Entrance view — looking in from the elevator",
+  "Constellation — scattered cluster tables, social cosmopolitan vibe",
+  "Crescent Flow — curved rows following the bar shape, natural movement",
+  "The Eclipse — concentric arcs facing the giant screen, event nights",
+  "Galaxy Lounge — leather booths + communal tables + VIP bottle service",
+  "Lunar Phases — casual → intimate → premium → VIP as you walk through"
+];
+
+const cameraPositions = [
+  {pos:[0,3,14], target:[0,2,-2]},      // Entrance
+  {pos:[18,15,18], target:[0,0,0]},     // Constellation
+  {pos:[15,12,15], target:[0,0,0]},     // Crescent
+  {pos:[12,14,12], target:[0,1,-4]},    // Eclipse
+  {pos:[-16,13,14], target:[2,0,0]},    // Galaxy
+  {pos:[0,18,20], target:[0,0,-4]},     // Lunar
+];
+
+function loadLayout(n){
+  clearTables();
+  
+  if(n===0){
+    // Entrance — people standing, some at bar
+    for(let i=0; i<8; i++){
+      addStandingPerson(-4+Math.random()*8, 6+Math.random()*4, 0);
+    }
+    // A few at bar
+    for(let i=0; i<5; i++){
+      const p = createPerson(true);
+      p.position.set(-3+i*1.5, 0, -1);
+      p.rotation.y = Math.PI;
+      scene.add(p);
+      currentPeople.push(p);
+    }
+  }
+  
+  if(n===1){
+    // Constellation — scattered clusters
+    const positions = [
+      [-7,5,0.5],[-5,6,2.5],[-3,5,1],
+      [-6,3,-1.5],[-4,3,-2.5],[-2,3,-1],
+      [-1,6,3.5],[1,6,2],[2,5,4],
+      [-5,0,1.5],[-3,0,3],[-1,0,2],
+      [-7,2,4.5],[-5,2,5.5],[-3,2,4.5],
+      [3,5,3],[5,5,4],[4,5,5.5],
+      [0,0,5],[2,0,6],[4,0,5.5],
+    ];
+    positions.forEach(([x,z,r])=>{
+      addTableWithChairs(x, z, r, Math.random()<0.5?3:4);
+    });
+    addStandingPerson(-8, 8, Math.PI);
+    addStandingPerson(6, 7, Math.PI*1.5);
+  }
+  
+  if(n===2){
+    // Crescent Flow — curved rows
+    for(let row=0; row<4; row++){
+      const zBase = 1 + row*1.8;
+      const rBase = 0.45 + (row===0||row===3?0:0.1);
+      for(let i=0; i<5; i++){
+        const t = i/4;
+        const x = -7 + t*12;
+        const z = zBase + Math.sin(t*Math.PI)*1.5;
+        addTableWithChairs(x, z, rBase, 4);
+      }
+    }
+    // Booths along edge
+    for(let i=0; i<3; i++){
+      addTableWithChairs(-9+i*0.5, 7+i*0.5, 0.5, 4);
+    }
+  }
+  
+  if(n===3){
+    // Eclipse — concentric arcs facing screen
+    for(let arc=0; arc<4; arc++){
+      const radius = 4 + arc*2.5;
+      const tablesPerArc = 5 + arc;
+      for(let i=0; i<tablesPerArc; i++){
+        const angle = (i/(tablesPerArc-1))*Math.PI*1.2 - Math.PI*0.6;
+        const x = Math.cos(angle)*radius;
+        const z = 2 + Math.sin(angle)*radius*0.6;
+        if(x > -11 && x < 7){
+          addTableWithChairs(x, z, 0.4+arc*0.03, 4);
+        }
+      }
+    }
+    // Communal tables
+    for(let i=0; i<2; i++){
+      const ct = new THREE.Mesh(
+        new THREE.BoxGeometry(2.5, 0.05, 1),
+        new THREE.MeshStandardMaterial({color: 0x2a2418, roughness:0.3, metalness:0.4})
+      );
+      ct.position.set(-4+i*5, 0.75, 7);
+      ct.castShadow = true;
+      scene.add(ct);
+      currentTables.push(ct);
+      // People at communal
+      for(let j=0; j<4; j++){
+        const p = createPerson(true);
+        p.position.set(-4+i*5-1+j*0.6, 0, 7.5);
+        p.rotation.y = -Math.PI/2;
+        scene.add(p);
+        currentPeople.push(p);
+      }
+    }
+  }
+  
+  if(n===4){
+    // Galaxy Lounge — booths + communal + VIP
+    // Booths along view edge
+    for(let i=0; i<5; i++){
+      const booth = new THREE.Mesh(
+        new THREE.BoxGeometry(1.5, 0.05, 0.8),
+        new THREE.MeshStandardMaterial({color: 0x2a2418, roughness:0.3, metalness:0.4})
+      );
+      booth.position.set(-8+i*3.5, 0.75, 8);
+      booth.castShadow = true;
+      scene.add(booth);
+      currentTables.push(booth);
+      // Booth seats (2 people facing each other)
+      for(let j=0; j<2; j++){
+        const p = createPerson(true);
+        p.position.set(-8+i*3.5, 0, 8-0.6+j*1.2);
+        p.rotation.y = j===0?0:Math.PI;
+        scene.add(p);
+        currentPeople.push(p);
+      }
+    }
+    // Communal high tables near bar
+    for(let i=0; i<3; i++){
+      const ht = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.6, 0.6, 1, 16),
+        new THREE.MeshStandardMaterial({color: 0x2a2418, roughness:0.3, metalness:0.4}
+      ));
+      ht.position.set(-6+i*3, 0.5, 3);
+      ht.castShadow = true;
+      scene.add(ht);
+      currentTables.push(ht);
+      for(let j=0; j<4; j++){
+        const a = (j/4)*Math.PI*2;
+        const p = createPerson(true);
+        p.position.set(-6+i*3+Math.cos(a)*0.9, 0, 3+Math.sin(a)*0.9);
+        p.rotation.y = a+Math.PI;
+        scene.add(p);
+        currentPeople.push(p);
+      }
+    }
+    // Round tables center
+    addTableWithChairs(-5, 0, 0.5, 4);
+    addTableWithChairs(-2, -0.5, 0.45, 4);
+    addTableWithChairs(1, 0, 0.5, 4);
+    addTableWithChairs(4, 1, 0.45, 3);
+    addTableWithChairs(-6, 2, 0.4, 3);
+    // VIP zone
+    const vipZone = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.7, 0.7, 0.05, 16),
+      new THREE.MeshStandardMaterial({color: 0x1a1206, roughness:0.2, metalness:0.6, emissive: 0xf0c93a, emissiveIntensity: 0.1})
+    );
+    vipZone.position.set(4, 0.75, -2);
+    vipZone.castShadow = true;
+    scene.add(vipZone);
+    currentTables.push(vipZone);
+    for(let j=0; j<4; j++){
+      const a = (j/4)*Math.PI*2;
+      const p = createPerson(true);
+      p.position.set(4+Math.cos(a)*0.9, 0, -2+Math.sin(a)*0.9);
+      p.rotation.y = a+Math.PI;
+      scene.add(p);
+      currentPeople.push(p);
+    }
+  }
+  
+  if(n===5){
+    // Lunar Phases — progressive layout
+    // Phase 1: casual (near entrance)
+    for(let i=0; i<4; i++){
+      addTableWithChairs(-7+i*3.5, 8, 0.4, 3);
+    }
+    // Phase 2: intimate (middle)
+    for(let i=0; i<3; i++){
+      addTableWithChairs(-6+i*4, 5, 0.5, 4);
+    }
+    // Booths
+    addTableWithChairs(-8, 3.5, 0.45, 2);
+    addTableWithChairs(-2, 4, 0.45, 2);
+    // Phase 3: premium (near amphitheater)
+    for(let i=0; i<3; i++){
+      const t = addTableWithChairs(-5+i*3, 1, 0.55, 4);
+      t.children[0].material.emissive = new THREE.Color(0xf0c93a);
+      t.children[0].material.emissiveIntensity = 0.05;
+    }
+    // VIP table
+    const vipT = addTableWithChairs(2, -1, 0.6, 4);
+    vipT.children[0].material.emissive = new THREE.Color(0xf0c93a);
+    vipT.children[0].material.emissiveIntensity = 0.08;
+  }
+  
+  // Update info
+  document.getElementById('info-text').textContent = layoutInfo[n];
+  
+  // Animate camera
+  const cp = cameraPositions[n];
+  animateCamera(cp.pos, cp.target);
+}
+
+// Camera animation
+let camAnim = null;
+function animateCamera(targetPos, targetLook){
+  const startPos = camera.position.clone();
+  const startLook = controls.target.clone();
+  const endPos = new THREE.Vector3(...targetPos);
+  const endLook = new THREE.Vector3(...targetLook);
+  
+  camAnim = {
+    start: performance.now(),
+    duration: 1500,
+    startPos, startLook, endPos, endLook
+  };
+}
+
+window.switchLayout = function(n){
+  document.querySelectorAll('.ltab').forEach((t,i)=>t.classList.toggle('active', i===n));
+  loadLayout(n);
+};
+
+// Resize
+window.addEventListener('resize', ()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Animation loop
+function animate(){
+  requestAnimationFrame(animate);
+  
+  // Camera animation
+  if(camAnim){
+    const t = (performance.now() - camAnim.start) / camAnim.duration;
+    if(t >= 1){
+      camera.position.copy(camAnim.endPos);
+      controls.target.copy(camAnim.endLook);
+      camAnim = null;
+    } else {
+      const e = 1 - Math.pow(1-t, 3); // ease-out cubic
+      camera.position.lerpVectors(camAnim.startPos, camAnim.endPos, e);
+      controls.target.lerpVectors(camAnim.startLook, camAnim.endLook, e);
+    }
+  }
+  
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+// Init
+loadLayout(0);
+animate();
+
+// Hide loading
+setTimeout(()=>{
+  document.getElementById('loading').style.opacity = '0';
+  setTimeout(()=>document.getElementById('loading').style.display='none', 500);
+}, 800);
+</script>
+</body>
+</html>
