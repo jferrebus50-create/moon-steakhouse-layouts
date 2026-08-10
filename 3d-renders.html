@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Moon Steakhouse — 3D Dining Renders</title>
+<title>Moon Steakhouse — Layout Renders</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0806;color:#e9d9ab;font-family:Poppins,sans-serif;overflow-x:hidden}
-header{text-align:center;padding:24px 16px 10px}
+header{text-align:center;padding:24px 16px 8px}
 .moon{width:45px;height:45px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f6e7b0,#f0c93a 50%,#8a6d1f);margin:0 auto 8px;box-shadow:0 0 28px 5px rgba(240,201,58,.35)}
 h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:26px;letter-spacing:3px;background:linear-gradient(180deg,#f6e7b0,#f0c93a 55%,#a9822b);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{color:#8f7c50;font-size:11px;margin-top:2px}
@@ -19,14 +19,14 @@ h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:26px;letter-sp
 .view{display:none;max-width:1000px;margin:0 auto;padding:0 12px 24px}
 .view.active{display:block}
 .view-title{font-family:Cormorant Garamond,serif;font-size:20px;color:#f0dfa9;text-align:center;margin-bottom:3px}
-.view-desc{color:#8f7c50;font-size:12px;text-align:center;margin-bottom:12px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
+.view-desc{color:#8f7c50;font-size:12px;text-align:center;margin-bottom:12px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6}
 .img-wrap{background:#14100a;border:1px solid #3a2f18;border-radius:14px;overflow:hidden;margin-bottom:12px}
 .img-wrap img{width:100%;display:block}
-.stats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.stats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:10px}
 .stat{background:#14100a;border:1px solid #3a2f18;border-radius:10px;padding:8px 14px;text-align:center;min-width:80px}
 .stat-num{font-family:Cormorant Garamond,serif;font-size:20px;color:#f0c93a}
 .stat-lbl{font-size:9px;color:#8f7c50;text-transform:uppercase;letter-spacing:1px;margin-top:1px}
-.nav{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.nav{display:flex;justify-content:center;gap:8px;margin-top:10px}
 .nav-btn{background:#14100a;border:1px solid #3a2f18;color:#8f7c50;padding:8px 20px;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s}
 .nav-btn:hover{border-color:#f0c93a;color:#f0c93a}
 .foot{text-align:center;color:#4a4030;font-size:10px;padding:14px;line-height:1.6}
@@ -36,79 +36,91 @@ h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:26px;letter-sp
 <header>
 <div class="moon"></div>
 <h1>MOON STEAKHOUSE</h1>
-<div class="sub">First-Person Dining Renders · Floor 24 · Medellín</div>
+<div class="sub">First-Person Layout Renders · Floor 24 · Medellín</div>
 </header>
 <div class="tabs">
-<button class="tab active" onclick="show(0)">Dining Room</button>
-<button class="tab" onclick="show(1)">From the Bar</button>
-<button class="tab" onclick="show(2)">City View Tables</button>
+<button class="tab active" onclick="show(0)">Entrance</button>
+<button class="tab" onclick="show(1)">Constellation</button>
+<button class="tab" onclick="show(2)">Crescent Flow</button>
 <button class="tab" onclick="show(3)">Event Night</button>
-<button class="tab" onclick="show(4)">Booth Seating</button>
+<button class="tab" onclick="show(4)">Galaxy Lounge</button>
+<button class="tab" onclick="show(5)">Lunar Phases</button>
 </div>
 
 <div class="view active" id="v0">
-<div class="view-title">The Constellation — Dining Room View</div>
-<div class="view-desc">Standing in the dining area. People eating at round tables with wine and steak. The crescent bar glows behind. Amphitheater steps with people sitting on yellow cushions holding cocktails.</div>
-<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/37c656bd7_generated_image.png" alt="Dining room view"></div>
+<div class="view-title">Entrance — Walking In</div>
+<div class="view-desc">Standing at the entrance looking down the dining room. Leather club chairs, banquette seating, city views. The crescent moon bar glows at the far end. No stairs visible — they're hidden behind the bar wall.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/768edb137_generated_image.png" alt="Entrance"></div>
 <div class="stats">
-<div class="stat"><div class="stat-num">~60</div><div class="stat-lbl">Dining</div></div>
-<div class="stat"><div class="stat-num">~35</div><div class="stat-lbl">Amphi</div></div>
-<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
+<div class="stat"><div class="stat-num">~3K</div><div class="stat-lbl">Sq Ft</div></div>
+<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar Seats</div></div>
 </div>
 <div class="nav"><button class="nav-btn" onclick="show(1)">Next →</button></div>
 </div>
 
 <div class="view" id="v1">
-<div class="view-title">From the Bar — Crescent Flow</div>
-<div class="view-desc">Eye-level from the crescent moon bar. Bartenders serving. People at curved tables eating dinner. Tiered amphitheater steps rising behind the bar with people on yellow cushions eating tapas.</div>
-<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/dfde1b46f_generated_image.png" alt="Bar view"></div>
+<div class="view-title">Layout 1 — "The Constellation"</div>
+<div class="view-desc">Tables scattered in small cluster groups across the floor. Social, cosmopolitan vibe — each cluster its own little constellation of diners.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/84f974c97_generated_image.png" alt="Constellation"></div>
 <div class="stats">
-<div class="stat"><div class="stat-num">~76</div><div class="stat-lbl">Dining</div></div>
-<div class="stat"><div class="stat-num">~30</div><div class="stat-lbl">Amphi</div></div>
+<div class="stat"><div class="stat-num">14</div><div class="stat-lbl">Clusters</div></div>
+<div class="stat"><div class="stat-num">~60</div><div class="stat-lbl">Dining</div></div>
 <div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
 </div>
 <div class="nav"><button class="nav-btn" onclick="show(0)">← Prev</button><button class="nav-btn" onclick="show(2)">Next →</button></div>
 </div>
 
 <div class="view" id="v2">
-<div class="view-title">City View Tables — Lunar Phases</div>
-<div class="view-desc">Sitting at a table looking toward the city. People eating dinner at curved rows. Amphitheater steps to the left with people on yellow cushions. Medellín lights through the columns.</div>
-<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/eae7a7b94_generated_image.png" alt="City view tables"></div>
+<div class="view-title">Layout 2 — "Crescent Flow"</div>
+<div class="view-desc">Curved rows of tables following the crescent bar shape. Natural flow from entrance through dining. People eating dinner with wine at curved table rows.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/7ebf2ff32_generated_image.png" alt="Crescent Flow"></div>
 <div class="stats">
-<div class="stat"><div class="stat-num">~78</div><div class="stat-lbl">Dining</div></div>
-<div class="stat"><div class="stat-num">~28</div><div class="stat-lbl">Amphi</div></div>
+<div class="stat"><div class="stat-num">19</div><div class="stat-lbl">Tables</div></div>
+<div class="stat"><div class="stat-num">~76</div><div class="stat-lbl">Dining</div></div>
 <div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
 </div>
 <div class="nav"><button class="nav-btn" onclick="show(1)">← Prev</button><button class="nav-btn" onclick="show(3)">Next →</button></div>
 </div>
 
 <div class="view" id="v3">
-<div class="view-title">Event Night — The Eclipse</div>
-<div class="view-desc">Game night. People eating at communal tables while watching the giant screen. Amphitheater steps packed with people on yellow cushions watching with drinks. Bar glowing in the background.</div>
-<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/e2a17f0be_generated_image.png" alt="Event night"></div>
+<div class="view-title">Layout 3 — "Event Night"</div>
+<div class="view-desc">Communal tables and round tables in arcs facing the giant screen. People eating while watching the game. Lively event atmosphere.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/0a0be482a_generated_image.png" alt="Event Night"></div>
 <div class="stats">
+<div class="stat"><div class="stat-num">21</div><div class="stat-lbl">Tables</div></div>
 <div class="stat"><div class="stat-num">~90</div><div class="stat-lbl">Dining</div></div>
-<div class="stat"><div class="stat-num">~28</div><div class="stat-lbl">Amphi</div></div>
 <div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
 </div>
 <div class="nav"><button class="nav-btn" onclick="show(2)">← Prev</button><button class="nav-btn" onclick="show(4)">Next →</button></div>
 </div>
 
 <div class="view" id="v4">
-<div class="view-title">Booth Seating — Galaxy Lounge</div>
-<div class="view-desc">Leather booth along the city-view wall. Intimate dining with wine and steak looking out at Medellín lights. Communal tables and amphitheater steps visible in the background.</div>
-<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/a410f0766_generated_image.png" alt="Booth seating"></div>
+<div class="view-title">Layout 4 — "Galaxy Lounge"</div>
+<div class="view-desc">Intimate leather booths along the city-view windows. Communal high tables in the center for social energy. People dining privately and in groups.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/99876b6d3_generated_image.png" alt="Galaxy Lounge"></div>
 <div class="stats">
+<div class="stat"><div class="stat-num">16</div><div class="stat-lbl">Tables</div></div>
 <div class="stat"><div class="stat-num">~85</div><div class="stat-lbl">Dining</div></div>
-<div class="stat"><div class="stat-num">~28</div><div class="stat-lbl">Amphi</div></div>
 <div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
 </div>
-<div class="nav"><button class="nav-btn" onclick="show(3)">← Prev</button></div>
+<div class="nav"><button class="nav-btn" onclick="show(3)">← Prev</button><button class="nav-btn" onclick="show(5)">Next →</button></div>
+</div>
+
+<div class="view" id="v5">
+<div class="view-title">Layout 5 — "Lunar Phases"</div>
+<div class="view-desc">Tables in progressive zones — casual near the entrance, intimate in the middle, premium near the bar. The layout tells a story as you walk through.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/3b983a0e6_generated_image.png" alt="Lunar Phases"></div>
+<div class="stats">
+<div class="stat"><div class="stat-num">18</div><div class="stat-lbl">Tables</div></div>
+<div class="stat"><div class="stat-num">~78</div><div class="stat-lbl">Dining</div></div>
+<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
+</div>
+<div class="nav"><button class="nav-btn" onclick="show(4)">← Prev</button></div>
 </div>
 
 <div class="foot">
-Moon Steakhouse · Floor 24 · ~3,000 sq ft · Medellín<br>
-People eating at tables · Sitting on tiered amphitheater steps with cocktails · Crescent bar underneath · Chartreuse-yellow + black
+Moon Steakhouse · Floor 24 · ~3,000 sq ft · Medellín · Stairs hidden behind bar wall · Crescent moon bar<br>
+People eating at tables · Chartreuse-yellow + black · No stairs visible from entrance
 </div>
 
 <script>
