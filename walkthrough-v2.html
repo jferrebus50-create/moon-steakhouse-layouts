@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moon Steakhouse — First-Person Walkthrough</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#f0c93a;--gold-d:#a9822b;--gold-l:#f6e7b0;--bg:#0a0806;--card:#0f0c08;--border:#2c2412;--text:#e9d9ab;--muted:#9c8a63;--dim:#6c5e3e}
+body{background:var(--bg);color:var(--text);font-family:Poppins,sans-serif;padding:14px 8px 40px}
+.w{max-width:1000px;margin:0 auto}
+.hdr{text-align:center;margin-bottom:8px}
+.mn{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--gold-l),var(--gold) 50%,#8a6d1f);margin:0 auto 6px;box-shadow:0 0 24px 4px rgba(240,201,58,.4)}
+.hdr h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:28px;letter-spacing:2px;background:linear-gradient(180deg,var(--gold-l),var(--gold) 55%,var(--gold-d));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hdr .sb{color:var(--muted);font-size:11px;margin-top:2px}
+.tabs{display:flex;gap:5px;justify-content:center;margin:14px 0 10px;flex-wrap:wrap}
+.tab{background:#14100a;border:1px solid #3a2f18;color:var(--muted);padding:7px 12px;border-radius:999px;font-size:11.5px;cursor:pointer;transition:.18s;font-weight:500;text-decoration:none}.tab:hover{border-color:var(--gold);color:#c9b57e}.tab.active{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1206;border-color:var(--gold)}
+.scene-box{background:linear-gradient(180deg,var(--card),#080604);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.6)}
+.scene-img{width:100%;display:block;min-height:300px;background:#0a0806}
+.scene-info{padding:16px 14px}
+.scene-title{font-family:Cormorant Garamond,serif;font-size:20px;color:#f0dfa9;font-weight:600}
+.scene-desc{color:#8f7c50;font-size:12.5px;margin-top:6px;line-height:1.6}
+.scene-features{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.feat-tag{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:3px 8px;border-radius:6px;font-size:10px}
+.nav-row{display:flex;gap:6px;justify-content:center;margin:12px 0}
+.nav-btn{background:#14100a;border:1px solid #3a2f18;color:#c9b57e;padding:7px 14px;border-radius:8px;font-size:12px;cursor:pointer;font-weight:500;transition:.15s}.nav-btn:hover{border-color:var(--gold);color:#f2e2ac}
+.dots{display:flex;gap:5px;justify-content:center;margin:6px 0}
+.dot{width:8px;height:8px;border-radius:50%;background:#2c2412;cursor:pointer;transition:.18s}.dot.active{background:var(--gold);box-shadow:0 0 6px rgba(240,201,58,.5)}
+.link{display:block;text-align:center;margin-top:14px;padding:10px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1206;border-radius:10px;text-decoration:none;font-weight:600;font-size:12.5px;transition:.15s}.link:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(240,201,58,.3)}
+.note{text-align:center;color:var(--dim);font-size:10px;margin-top:14px;line-height:1.7}
+.specs{background:#14100a;border:1px solid #2c2412;border-radius:10px;padding:12px;margin:14px 0}
+.specs h3{font-family:Cormorant Garamond,serif;font-size:15px;color:#f0dfa9;margin-bottom:8px}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+.spec-item{background:#0f0c08;border:1px solid #2c2412;padding:7px 10px;border-radius:6px}
+.spec-label{color:var(--dim);font-size:9.5px;text-transform:uppercase;letter-spacing:.5px}
+.spec-val{color:#c9b57e;font-size:11.5px;margin-top:2px;font-weight:500}
+</style></head><body><div class="w">
+<div class="hdr"><div class="mn"></div><h1>MOON STEAKHOUSE</h1><div class="sb">First-Person Walkthrough · Rooftop Dining · Medellín</div></div>
+<div class="tabs">
+<a class="tab active" href="#walkthrough">Walkthrough</a>
+<a class="tab" href="index.html">Layout Demos</a>
+<a class="tab" href="walkthrough.html">Walkthrough v1</a>
+</div>
+
+<div class="scene-box" id="walkthrough">
+<img class="scene-img" id="sceneImg" src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/a600aa407_generated_image.png" alt="Walking In">
+<div class="scene-info">
+<div class="scene-title" id="sceneTitle">1. Walking In — The Terrace</div>
+<div class="scene-desc" id="sceneDesc">You step off the elevator on the top floor. Before you, the entire open-air terrace unfolds — the crescent moon bar glowing amber under the amphitheater staircase, round dining tables with white tablecloths along the glass railing with city lights beyond, and the tiered yellow bench seating rising on the right under the open sky.</div>
+<div class="scene-features" id="sceneFeats">
+<span class="feat-tag">Crescent moon bar</span><span class="feat-tag">Amphitheater stairs (right)</span><span class="feat-tag">City panorama</span><span class="feat-tag">Japanese maple</span><span class="feat-tag">Open sky above stairs</span>
+</div>
+</div>
+</div>
+
+<div class="nav-row">
+<button class="nav-btn" onclick="prev()">← Previous</button>
+<button class="nav-btn" onclick="next()">Next →</button>
+</div>
+<div class="dots" id="dots"></div>
+
+<div class="specs">
+<h3>Design Specifications</h3>
+<div class="spec-grid">
+<div class="spec-item"><div class="spec-label">Bar Shape</div><div class="spec-val">Crescent Moon</div></div>
+<div class="spec-item"><div class="spec-label">Bar Location</div><div class="spec-val">Under stairs (left side)</div></div>
+<div class="spec-item"><div class="spec-label">Stair Direction</div><div class="spec-val">Up from left → right</div></div>
+<div class="spec-item"><div class="spec-label">Stair Type</div><div class="spec-val">Open-riser amphitheater</div></div>
+<div class="spec-item"><div class="spec-label">Stair Roof</div><div class="spec-val">Open-air (no roof)</div></div>
+<div class="spec-item"><div class="spec-label">Color Palette</div><div class="spec-val">Chartreuse-yellow + Black</div></div>
+<div class="spec-item"><div class="spec-label">Glass Pods</div><div class="spec-val">Removed (not built)</div></div>
+<div class="spec-item"><div class="spec-label">Flooring</div><div class="spec-val">Light stone tile</div></div>
+<div class="spec-item"><div class="spec-label">Facade</div><div class="spec-val">White perforated panels</div></div>
+<div class="spec-item"><div class="spec-label">VIP Deck</div><div class="spec-val">Rooftop garden, Floor 25</div></div>
+</div>
+</div>
+
+<a class="link" href="index.html">View Interactive Table Layout Demos →</a>
+<div class="note">First-person AI concept renders based on real Enscape 3D architect renders and construction site photos.<br>Stairs on right going up, crescent moon bar underneath, no glass pods, open-air amphitheater seating.<br>Renders are conceptual — actual finishes may vary.</div>
+</div>
+
+<script>
+const SCENES=[
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/a600aa407_generated_image.png',
+title:'1. Walking In — The Terrace',
+desc:'You step off the elevator on the top floor. Before you, the entire open-air terrace unfolds — the crescent moon bar glowing amber under the amphitheater staircase, round dining tables with white tablecloths along the glass railing with city lights beyond, and the tiered yellow bench seating rising on the right under the open sky.',
+feats:['Crescent moon bar','Amphitheater stairs (right)','City panorama','Japanese maple','Open sky above stairs']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/5fefd2e4d_generated_image.png',
+title:'2. At The Bar — Looking Up',
+desc:'Standing at the crescent moon-shaped bar, you look up through the open-riser black steel amphitheater staircase. Chartreuse-yellow bench cushions on each tier, warm lighting, and through the open risers you can see the night sky with stars and the silhouette of the mountains. The bartender is making a cocktail, friends sit on woven stools, dark wood slats line the underside of the stairs.',
+feats:['Crescent moon bar','Open-riser staircase','Yellow tiered benches','Star view through risers','Bartender at work']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/75b2b2746_generated_image.png',
+title:'3. Dining Table — The View',
+desc:'Seated at a round table on the left side of the terrace. To your left, the glass railing and the glittering city of Medellín spread across the valley, the baseball stadium glowing in the distance. To your right, the amphitheater staircase rises with people sitting on yellow benches watching a giant screen showing the game. A Japanese maple tree with deep red leaves stands between you and the stairs. Candlelight, wine, steak.',
+feats:['City + stadium view','Giant screen','Japanese maple','Candlelight dining','Open-air terrace']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/5508b7e17_generated_image.png',
+title:'4. From The Stairs — The Overview',
+desc:'Sitting on the top tier of the amphitheater seating, you look down and out over the entire terrace. The crescent bar glows below, diners at their tables, waiters moving between them. Beyond the glass railing, Medellín glows golden in the valley between mountains at dusk. On the right behind you, the rooftop garden with lavender under the yellow canopy roof. A giant screen shows a live game.',
+feats:['Top tier view','Full terrace panorama','Rooftop garden behind','Giant screen','Golden hour city']},
+{img:'https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/53442e2cd_generated_image.png',
+title:'5. VIP Rooftop Garden — The Deck',
+desc:'You have climbed the open-riser stairs and arrived at the rooftop garden on Floor 25. Lavender plants in planter boxes surround a small intimate seating nook with yellow lounge chairs. The chartreuse-yellow canopy roof covers this upper deck. Through the plants, you can see down over the entire terrace — the bar, the dining tables, the city of Medellín glowing in the valley at golden hour. A couple sits with champagne.',
+feats:['VIP observation deck','Rooftop garden','Lavender plants','Yellow canopy roof','Champagne seating']},
+];
+let cur=0;
+const imgEl=document.getElementById('sceneImg'),titleEl=document.getElementById('sceneTitle'),descEl=document.getElementById('sceneDesc'),featsEl=document.getElementById('sceneFeats'),dotsEl=document.getElementById('dots');
+function render(i){cur=i;const s=SCENES[i];imgEl.src=s.img;imgEl.alt=s.title;titleEl.textContent=s.title;descEl.textContent=s.desc;featsEl.innerHTML=s.feats.map(f=>'<span class="feat-tag">'+f+'</span>').join('');
+[...dotsEl.children].forEach((d,idx)=>d.classList.toggle('active',idx===i))}
+function next(){render((cur+1)%SCENES.length)}
+function prev(){render((cur-1+SCENES.length)%SCENES.length)}
+SCENES.forEach((s,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>render(i);dotsEl.appendChild(d)});
+</script></body></html>
