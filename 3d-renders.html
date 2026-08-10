@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moon Steakhouse — 3D Layout Renders</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0806;color:#e9d9ab;font-family:Poppins,sans-serif;overflow-x:hidden}
+header{text-align:center;padding:24px 16px 10px}
+.moon{width:45px;height:45px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f6e7b0,#f0c93a 50%,#8a6d1f);margin:0 auto 8px;box-shadow:0 0 28px 5px rgba(240,201,58,.35)}
+h1{font-family:Cormorant Garamond,serif;font-weight:700;font-size:28px;letter-spacing:3px;background:linear-gradient(180deg,#f6e7b0,#f0c93a 55%,#a9822b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:#8f7c50;font-size:12px;margin-top:2px}
+.tabs{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;padding:16px;max-width:900px;margin:0 auto}
+.tab{background:#14100a;border:1px solid #3a2f18;color:#8f7c50;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:500;transition:.2s;font-family:inherit}
+.tab:hover{border-color:#f0c93a;color:#e9d9ab}
+.tab.active{background:linear-gradient(135deg,rgba(240,201,58,.15),rgba(169,130,43,.05));border-color:#f0c93a;color:#f0c93a}
+.view{display:none;max-width:1100px;margin:0 auto;padding:0 16px 30px}
+.view.active{display:block}
+.view-title{font-family:Cormorant Garamond,serif;font-size:22px;color:#f0dfa9;text-align:center;margin-bottom:4px}
+.view-desc{color:#8f7c50;font-size:12px;text-align:center;margin-bottom:14px;max-width:550px;margin-left:auto;margin-right:auto;line-height:1.6}
+.img-wrap{background:#14100a;border:1px solid #3a2f18;border-radius:14px;overflow:hidden;margin-bottom:14px}
+.img-wrap img{width:100%;display:block}
+.stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.stat{background:#14100a;border:1px solid #3a2f18;border-radius:10px;padding:10px 16px;text-align:center;min-width:90px}
+.stat-num{font-family:Cormorant Garamond,serif;font-size:22px;color:#f0c93a}
+.stat-lbl{font-size:9px;color:#8f7c50;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.foot{text-align:center;color:#4a4030;font-size:10px;padding:16px;line-height:1.6}
+</style>
+</head>
+<body>
+<header>
+<div class="moon"></div>
+<h1>MOON STEAKHOUSE</h1>
+<div class="sub">3D Layout Renders · Floor 24 · Medellín</div>
+</header>
+<div class="tabs">
+<button class="tab active" onclick="show(0)">Entrance</button>
+<button class="tab" onclick="show(1)">Constellation</button>
+<button class="tab" onclick="show(2)">Crescent Flow</button>
+<button class="tab" onclick="show(3)">The Eclipse</button>
+<button class="tab" onclick="show(4)">Galaxy Lounge</button>
+<button class="tab" onclick="show(5)">Lunar Phases</button>
+</div>
+
+<div class="view active" id="v0">
+<div class="view-title">Entrance — First Impression</div>
+<div class="view-desc">Walking in from the elevator. The crescent moon bar glows under the tiered amphitheater seating where people sit with cocktails and food. City lights through the steel columns.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/3498fdf3d_generated_image.png" alt="Entrance view"></div>
+<div class="stats">
+<div class="stat"><div class="stat-num">4</div><div class="stat-lbl">Tiers</div></div>
+<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar Seats</div></div>
+<div class="stat"><div class="stat-num">~35</div><div class="stat-lbl">Amphi Seats</div></div>
+</div>
+</div>
+
+<div class="view" id="v1">
+<div class="view-title">Layout 1 — "The Constellation"</div>
+<div class="view-desc">Tables scattered in star-pattern clusters. Social, cosmopolitan vibe — each cluster its own constellation around the amphitheater.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/7d5c0b5ac_generated_image.png" alt="Constellation layout"></div>
+<div class="stats">
+<div class="stat"><div class="stat-num">14</div><div class="stat-lbl">Clusters</div></div>
+<div class="stat"><div class="stat-num">~60</div><div class="stat-lbl">Dining</div></div>
+<div class="stat"><div class="stat-num">~35</div><div class="stat-lbl">Amphi</div></div>
+<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
+</div>
+</div>
+
+<div class="view" id="v2">
+<div class="view-title">Layout 2 — "Crescent Flow"</div>
+<div class="view-desc">Curved rows of tables mirroring the crescent bar shape. Natural flow from entrance through dining toward the amphitheater.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/f4e286cd0_generated_image.png" alt="Crescent Flow layout"></div>
+<div class="stats">
+<div class="stat"><div class="stat-num">19</div><div class="stat-lbl">Tables</div></div>
+<div class="stat"><div class="stat-num">~76</div><div class="stat-lbl">Dining</div></div>
+<div class="stat"><div class="stat-num">~30</div><div class="stat-lbl">Amphi</div></div>
+<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
+</div>
+</div>
+
+<div class="view" id="v3">
+<div class="view-title">Layout 3 — "The Eclipse"</div>
+<div class="view-desc">Concentric arcs facing the giant screen. Built for event nights — sports, concerts, screenings. Moveable tables + communal high tables.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/a9d1173c3_generated_image.png" alt="Eclipse layout"></div>
+<div class="stats">
+<div class="stat"><div class="stat-num">21</div><div class="stat-lbl">Tables</div></div>
+<div class="stat"><div class="stat-num">~90</div><div class="stat-lbl">Dining</div></div>
+<div class="stat"><div class="stat-num">~28</div><div class="stat-lbl">Amphi</div></div>
+<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
+</div>
+</div>
+
+<div class="view" id="v4">
+<div class="view-title">Layout 4 — "Galaxy Lounge"</div>
+<div class="view-desc">Leather booths along city views for privacy, communal high tables near the bar for social energy, VIP bottle service near the amphitheater.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/37a11133e_generated_image.png" alt="Galaxy Lounge layout"></div>
+<div class="stats">
+<div class="stat"><div class="stat-num">16</div><div class="stat-lbl">Tables</div></div>
+<div class="stat"><div class="stat-num">~85</div><div class="stat-lbl">Dining</div></div>
+<div class="stat"><div class="stat-num">~28</div><div class="stat-lbl">Amphi</div></div>
+<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
+</div>
+</div>
+
+<div class="view" id="v5">
+<div class="view-title">Layout 5 — "Lunar Phases"</div>
+<div class="view-desc">Tables in phases from entrance to VIP — casual → intimate → premium → VIP. The layout tells a story as you walk through.</div>
+<div class="img-wrap"><img src="https://media.base44.com/images/public/6a78e09b1e9318dca1f22816/509b9e8e5_generated_image.png" alt="Lunar Phases layout"></div>
+<div class="stats">
+<div class="stat"><div class="stat-num">18</div><div class="stat-lbl">Tables</div></div>
+<div class="stat"><div class="stat-num">~78</div><div class="stat-lbl">Dining</div></div>
+<div class="stat"><div class="stat-num">~28</div><div class="stat-lbl">Amphi</div></div>
+<div class="stat"><div class="stat-num">~80</div><div class="stat-lbl">Bar</div></div>
+</div>
+</div>
+
+<div class="foot">
+Moon Steakhouse · Floor 24 · ~3,000 sq ft · Medellín · Escalinatas = tiered seating where people sit with cocktails and food<br>
+Crescent bar underneath · Walkable both sides · Chartreuse-yellow + black · Giant screen · Glass skywalk · VIP deck floor 25
+</div>
+
+<script>
+function show(n){
+document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+document.getElementById('v'+n).classList.add('active');
+document.querySelectorAll('.tab')[n].classList.add('active');
+window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
